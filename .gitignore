@@ -1,13 +1,11 @@
 *~
 bochsout.txt
 *bin
-80m*
 *.o
 .DS_Store
 tmp.c
 main
 bochs*
-a.img
 krnl.map
 .vscode
 ignore
