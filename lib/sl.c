@@ -37,11 +37,11 @@ PUBLIC void sl(){
   printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
   printf("       ****       ****   *******         xx                             xx  \n");
   printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
-  printf("            *********  ****              xx  Based on Orange Kernal     xx  \n");
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
   printf("             ******** ****               xx  version 1.0.0              xx  \n");
-  printf("              *************              xx                                 \n");
-  printf("                ************             xx                                 \n");
-  printf("                  ****************       xx                                 \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                ************             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                  ****************                                          \n");
   printf("                         *******                                            \n");
   printf("                           ***                                              \n");
   printf("                            *                                               \n");
