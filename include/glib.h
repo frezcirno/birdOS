@@ -23,6 +23,8 @@ typedef struct s_shtctl
     SHEET _sheets[MAX_SHEETS];
 } SHTCTL;
 
+extern unsigned char *vram;
+
 extern int scr_x;
 extern int scr_y;
 extern int scr_bpp;

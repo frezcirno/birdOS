@@ -28,15 +28,13 @@ OBJS        = kernel/kernel.o lib/syscall.o kernel/start.o kernel/main.o \
 			kernel/clock.o kernel/keyboard.o kernel/tty.o kernel/console.o \
 			kernel/i8259.o kernel/global.o kernel/protect.o kernel/proc.o \
 			kernel/systask.o kernel/hd.o \
-			lib/printf.o lib/sl.o lib/vsprintf.o \
+			lib/printf.o lib/sl.o lib/vsprintf.o lib/rand.o \
 			lib/kliba.o lib/klib.o lib/ls.o lib/mkdir.o lib/misc.o \
 			lib/open.o lib/read.o lib/write.o lib/close.o lib/unlink.o \
 			lib/getpid.o lib/syslog.o lib/fork.o lib/glib.o lib/u_vga16.o lib/BGA.o \
 			mm/main.o mm/func.o mm/memory.o \
-			fs/main.o fs/open.o fs/misc.o fs/read_write.o \
-			fs/link.o \
-			fs/disklog.o \
-			game/TTT.o 
+			fs/main.o fs/open.o fs/misc.o fs/read_write.o fs/link.o fs/disklog.o \
+			game/TTT.o game/2048.o game/flappy.o 
 DASMOUTPUT  = kernel.bin.asm
 
 # All Phony Targets

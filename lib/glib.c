@@ -14,7 +14,7 @@
 #include "string.h"
 #include "memory.h"
 
-unsigned char *vram;
+unsigned char *vram = 0xe0000000;
 int scr_x;
 int scr_y;
 int scr_bpp;
@@ -46,7 +46,7 @@ void init_video()
     initPalette();
     cacheFonts();
 
-    init_sheets(scr_x, scr_y);
+    // init_sheets(scr_x, scr_y);
 }
 
 void initPalette()

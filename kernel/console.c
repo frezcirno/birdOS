@@ -1,11 +1,3 @@
-/*************************************************************************//**
- *****************************************************************************
- * @file   console.c
- * @brief  Manipulate the console.
- * @author Forrest Y. Yu
- * @date   2005
- *****************************************************************************
- *****************************************************************************/
 
 #include "type.h"
 #include "stdio.h"
@@ -19,6 +11,8 @@
 #include "global.h"
 #include "keyboard.h"
 #include "proto.h"
+#include "font.h"
+#include "glib.h"
 
 /* #define __TTY_DEBUG__ */
 
@@ -40,22 +34,30 @@ PUBLIC void out_char(CONSOLE* con, char ch);
 PUBLIC void init_screen(TTY* tty)
 {
 	int nr_tty = tty - tty_table;
-	tty->console = console_table + nr_tty;
+	//tty->console = console_table + nr_tty;
+	tty->console = console_table;
 
 	/* 
 	 * NOTE:
 	 *   variables related to `position' and `size' below are
 	 *   in WORDs, but not in BYTEs.
 	 */
-	int v_mem_size = V_MEM_SIZE >> 1; /* size of Video Memory */
-	int size_per_con = v_mem_size / NR_CONSOLES;
-	tty->console->orig = nr_tty * size_per_con;
-	tty->console->con_size = size_per_con / SCR_WIDTH * SCR_WIDTH;
+	// int v_mem_size = V_MEM_SIZE >> 1; /* size of Video Memory */
+	// int size_per_con = v_mem_size / NR_CONSOLES;
+	// tty->console->orig = nr_tty * size_per_con;
+	// tty->console->con_size = size_per_con / SCR_WIDTH * SCR_WIDTH;
+	// tty->console->cursor = tty->console->crtc_start = tty->console->orig;
+	// tty->console->is_full = 0;
+
+	int v_mem_size = V_MEM_SIZE; /* size of Video Memory */
+	int size_per_con = v_mem_size;
+	tty->console->orig = 0;
+	tty->console->con_size = SCR_SIZE;
 	tty->console->cursor = tty->console->crtc_start = tty->console->orig;
 	tty->console->is_full = 0;
-
+	
 	if (nr_tty == 0) {
-		tty->console->cursor = disp_pos / 2;
+		//tty->console->cursor = disp_pos / 2;
 		disp_pos = 0;
 	}
 	else {
@@ -72,6 +74,13 @@ PUBLIC void init_screen(TTY* tty)
 	set_cursor(tty->console->cursor);
 }
 
+void print_char(int cursor_x, int cursor_y, char c, char ch)
+{
+	int x = cursor_x * 8;
+	int y = cursor_y * 16;
+	fillRect(x, y, x + 8, y + 16, PEN_BLACK);
+	drawChar(x, y, ch, c);
+}
 
 /*****************************************************************************
  *                                out_char
@@ -84,7 +93,7 @@ PUBLIC void init_screen(TTY* tty)
  *****************************************************************************/
 PUBLIC void out_char(CONSOLE* con, char ch)
 {
-	u8* pch = (u8*)(V_MEM_BASE + con->cursor * 2);
+	// u8 *pch = vram + (con->cursor / SCR_WIDTH) * 16 * scr_x + (con->cursor % SCR_WIDTH) * 8;
 
 	assert(con->cursor - con->orig < con->con_size);
 
@@ -102,13 +111,13 @@ PUBLIC void out_char(CONSOLE* con, char ch)
 	case '\b':
 		if (con->cursor > con->orig) {
 			con->cursor--;
-			*(pch - 2) = ' ';
-			*(pch - 1) = DEFAULT_CHAR_COLOR;
+			int cursor_x = (con->cursor - con->orig) % SCR_WIDTH;
+			int cursor_y = (con->cursor - con->orig) / SCR_WIDTH;
+			print_char(cursor_x,cursor_y,7,' ');
 		}
 		break;
 	default:
-		*pch++ = ch;
-		*pch++ = DEFAULT_CHAR_COLOR;
+		print_char(cursor_x, cursor_y, 7, ch);
 		con->cursor++;
 		break;
 	}
@@ -148,11 +157,11 @@ PUBLIC void out_char(CONSOLE* con, char ch)
  *****************************************************************************/
 PUBLIC void clear_screen(int pos, int len)
 {
-	u8 * pch = (u8*)(V_MEM_BASE + pos * 2);
-	while (--len >= 0) {
-		*pch++ = ' ';
-		*pch++ = DEFAULT_CHAR_COLOR;
-	}
+	int cursor_x = (pos) % SCR_WIDTH;
+	int cursor_y = (pos) / SCR_WIDTH;
+
+	assert(cursor_x + len <= SCR_WIDTH);
+	fillRect(cursor_x, cursor_y * 16, cursor_x + 8 * len, cursor_y * 16 + 16, PEN_BLACK);
 }
 
 
@@ -221,9 +230,10 @@ PUBLIC void set_video_start_addr(u32 addr)
  *****************************************************************************/
 PUBLIC void select_console(int nr_console)
 {
+	
 	if ((nr_console < 0) || (nr_console >= NR_CONSOLES)) return;
-
-	flush(&console_table[current_console = nr_console]);
+	current_console = 0;
+	//flush(&console_table[current_console = nr_console]);
 }
 
 
@@ -307,15 +317,15 @@ PUBLIC void scroll_screen(CONSOLE* con, int dir)
  *****************************************************************************/
 PUBLIC void flush(CONSOLE* con)
 {
-	if (is_current_console(con)) {
-		set_cursor(con->cursor);
-		set_video_start_addr(con->crtc_start);
-	}
+	// if (is_current_console(con)) {
+	// 	set_cursor(con->cursor);
+	// 	set_video_start_addr(con->crtc_start);
+	// }
 
 #ifdef __TTY_DEBUG__
 	int lineno = 0;
 	for (lineno = 0; lineno < con->con_size / SCR_WIDTH; lineno++) {
-		u8 * pch = (u8*)(V_MEM_BASE +
+		u8 * pch = (u8*)(vram +
 				   (con->orig + (lineno + 1) * SCR_WIDTH) * 2
 				   - 4);
 		*pch++ = lineno / 10 + '0';
@@ -341,8 +351,24 @@ PUBLIC void flush(CONSOLE* con)
  *****************************************************************************/
 PRIVATE	void w_copy(unsigned int dst, const unsigned int src, int size)
 {
-	phys_copy((void*)(V_MEM_BASE + (dst << 1)),
-		  (void*)(V_MEM_BASE + (src << 1)),
-		  size << 1);
+	int xsize = scr_x;
+	int src_copy = src;
+	int src_x, src_y, dst_x, dst_y;
+	for (int k = 0; k < size; k++)
+	{
+		src_x = (src_copy % SCR_WIDTH) * 8;
+		src_y = (src_copy / SCR_WIDTH) * 16;
+		dst_x = (dst % SCR_WIDTH) * 8;
+		dst_y = (dst / SCR_WIDTH) * 16;
+		char *p, *d /* data */;
+		for (int i = 0; i < 16; i++)
+		{
+			p = vram + (src_y + i) * xsize + src_x;
+			d = vram + (dst_y + i) * xsize + dst_x;
+			for (int j = 0; j < 8; j++)
+				d[j] = p[j];
+		}
+		src_copy++;
+		dst++;
+	}
 }
-

@@ -16,9 +16,11 @@
 #include "console.h"
 #include "global.h"
 #include "proto.h"
-#include "2048Game.h"
+#include "2048.h"
+#include "flappy.h"
 #include "memory.h"
 #include "glib.h"
+#include "bmp.h"
 
 /*======================================================================*
                             kernel_main
@@ -139,8 +141,8 @@ PUBLIC int kernel_main()
     init_clock();
     init_keyboard();
     
-    mm_init();
-    // init_video();
+    // mm_init();
+    init_video();
 
     restart();
 
@@ -234,10 +236,10 @@ void TestA()
     int fd_stdout = open(tty_name, O_RDWR);
     assert(fd_stdout == 1);
 
-//  char filename[MAX_FILENAME_LEN+1] = "zsp01";
-    const char bufw[80] = {0};
-//  const int rd_bytes = 3;
-//  char bufr[rd_bytes];
+    //  char filename[MAX_FILENAME_LEN+1] = "zsp01";
+    // const char bufw[80] = {0};
+    //  const int rd_bytes = 3;
+    //  char bufr[rd_bytes];
     // sl();
     // clear();
     printf("                        ==================================\n");
@@ -345,7 +347,7 @@ void TestA()
         }
 
         else if (strcmp(cmd, "getpid") == 0) {
-            printf(strcat(getpid(), "\n"));
+            printf(strcat((char*)getpid(), "\n"));
             printi(getpid());
             printf("\n");
             printi(new_getpid());
@@ -358,6 +360,14 @@ void TestA()
             } else {
                 printl("childpid: %d, childname: %s\n", pid, proc_table[pid].name);
             }
+        }
+        else if (strcmp(cmd, "flappybird") == 0)
+        {
+            startflappyBird(fd_stdin, fd_stdout);
+        }
+        else if (strcmp(cmd, "showlogo") == 0)
+        {
+           // _showImage("logo");
         }
 
         else if (strcmp(cmd, "test_ldt") == 0) {
@@ -380,6 +390,14 @@ void TestA()
                 printl("{MM} %s, %x,%x,%x,%x,%x,%x)\n", proc_table[i].name, ppd->limit_low, ppd->base_low,  ppd->base_mid, ppd->base_high, ppd->attr1, ppd->limit_high_attr2);
                 
             }
+        }
+        else if (strcmp(cmd, "saveImage") == 0)
+        {
+            saveImage(current_dirr, namess, www, hhh);
+        }
+        else if (strcmp(cmd, "showImage") == 0)
+        {
+            _showImage(current_dirr, filename1);
         }
 
         else
@@ -406,14 +424,14 @@ void TestB()
     assert(fd_stdout == 1);
 
     char rdbuf[128];
-    char cmd[8];
-    char filename[120];
-    char buf[1024];
-    int m,n;
-    printf("                        ==================================\n");
-    printf("                                    File Manager           \n");
-    printf("                                 Kernel on Orange's \n\n");
-    printf("                        ==================================\n");
+    // char cmd[8];
+    // char filename[120];
+    // char buf[1024];
+    // int m, n;
+    // printf("                        ==================================\n");
+    // printf("                                    File Manager           \n");
+    // printf("                                 Kernel on Orange's \n\n");
+    // printf("                        ==================================\n");
     while (1) {
         printf("$ ");
         int r = read(fd_stdin, rdbuf, 70);
@@ -465,7 +483,11 @@ PUBLIC void panic(const char *fmt, ...)
 
 void clear()
 {
-    clear_screen(0,console_table[current_console].cursor);
+    unsigned char *p = vram;
+    for (int i = 0; i < scr_x * scr_y; ++i)
+    {
+        p[i] = 0;
+    }
     console_table[current_console].crtc_start = 0;
     console_table[current_console].cursor = 0;
 }
@@ -667,4 +689,64 @@ void GoDir(char* path, char* file)
         printf("%s is not a directory!\n", absoPath);
     else
         memcpy(path, absoPath, 512);
+}
+
+void _showImage(char *path, char *filename)
+{
+    clear();
+    char absoPath[512];
+    convert_to_absolute(absoPath, path, filename);
+    unsigned char size[3];
+    int fd = open(absoPath, O_RDWR);
+    assert(fd != -1);
+    read(fd, size, 3);
+    int w = size[0] + size[1];
+    int h = size[2];
+    int rd_bytes = w * h;
+    unsigned char Img[rd_bytes];
+    int n = read(fd, Img, rd_bytes);
+    assert(n == rd_bytes);
+    close(fd);
+    unsigned char *p = vram;
+    for (int y = 0; y < h; y++)
+    {
+        for (int x = 0; x < w; x++)
+        {
+            p[y * 320 + x] = Img[y * w + x];
+        }
+    }
+    console_table[current_console].cursor = ((h / 16) + 1) * 8;
+    waitkey();
+}
+
+void saveImage(char *path, char *filename, int w, int h)
+{
+    int fd, n, size;
+    if (w > 320)
+        w = 320;
+    if (h > 200)
+        h = 200;
+    size = w * h + 3;
+    CreateFile(path, filename);
+
+    char absoPath[512];
+    convert_to_absolute(absoPath, path, filename);
+    fd = open(absoPath, O_RDWR);
+    /*write*/
+    unsigned char bufw[64000];
+    bufw[0] = w % 255;
+    bufw[1] = w - bufw[0];
+    bufw[2] = h;
+    for (int y = 0; y < h; y++)
+    {
+        for (int x = 0; x < w; x++)
+        {
+            bufw[y * w + x + 3] = bmp[y][x];
+        }
+    }
+    bufw[size] = 0;
+    n = write(fd, bufw, size + 1);
+    assert(n == size + 1);
+    printf("File writed. fd: %d\n", fd);
+    close(fd);
 }

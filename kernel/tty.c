@@ -48,6 +48,7 @@
 #include "global.h"
 #include "keyboard.h"
 #include "proto.h"
+#include "glib.h"
 
 
 #define TTY_FIRST	(tty_table)
@@ -407,14 +408,14 @@ PUBLIC int sys_printx(int _unused1, int _unused2, char* s, struct proc* p_proc)
 	if ((*p == MAG_CH_PANIC) ||
 	    (*p == MAG_CH_ASSERT && p_proc_ready < &proc_table[NR_TASKS])) {
 		disable_int();
-		char * v = (char*)V_MEM_BASE;
+		unsigned char *v = vram;
 		const char * q = p + 1; /* +1: skip the magic char */
 
-		while (v < (char*)(V_MEM_BASE + V_MEM_SIZE)) {
+		while (v < (char*)(vram + V_MEM_SIZE)) {
 			*v++ = *q++;
 			*v++ = RED_CHAR;
 			if (!*q) {
-				while (((int)v - V_MEM_BASE) % (SCR_WIDTH * 16)) {
+				while ((v - vram) % (SCR_WIDTH * 16)) {
 					/* *v++ = ' '; */
 					v++;
 					*v++ = GRAY_CHAR;

@@ -45,7 +45,7 @@
 #define RECEIVING 0x04	/* set when proc trying to recv */
 #define WAITING   0x08  /* set when proc waiting for the child to terminate */
 #define HANGING   0x10  /* set when proc exits without being waited by parent */
-#define FREE_SLOT 0x20  /* set when proc table entry is not used
+#define FREE_SLOT 0x20  /* set when proc table entry is not used */
 
 /* TTY */
 #define NR_CONSOLES	3	/* consoles */
@@ -83,8 +83,8 @@
 #define	START_ADDR_L	0xD	/* reg index of video mem start addr (LSB) */
 #define	CURSOR_H	0xE	/* reg index of cursor position (MSB) */
 #define	CURSOR_L	0xF	/* reg index of cursor position (LSB) */
-#define	V_MEM_BASE	0xB8000	/* base of color video memory */
-#define	V_MEM_SIZE	0x8000	/* 32K: B8000H -> BFFFFH */
+// #define	V_MEM_BASE	0xB8000	/* base of color video memory */
+#define	V_MEM_SIZE	(800*600)	/* 32K: B8000H -> BFFFFH */
 
 /* Hardware interrupts */
 #define	NR_IRQ		16	/* Number of IRQs */

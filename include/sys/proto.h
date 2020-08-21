@@ -246,3 +246,28 @@ PUBLIC int printx(char *str);
 
 #undef NULL
 #define NULL ((void *)0)
+
+// kernel/main.c
+void ProcessManage();
+void CreateFile(char *path, char *file);
+void DeleteFile(char *path, char *file);
+void ReadFile(char *path, char *file);
+void WriteFile(char *path, char *file);
+void CreateDir(char *path, char *file);
+void GoDir(char *path, char *file);
+void _showImage(char *path, char *filename);
+void saveImage(char *path, char *filename, int w, int h);
+void clear();
+void help();
+
+// lib/getpid.c
+PUBLIC int getpid();
+
+// lib/ls.c
+PUBLIC int ls(char *pathName); // 传入当前目录，发送当前目录下的文件名
+
+// lib/printf.c
+PUBLIC int printi(u32 num, ...);
+
+// lib/mkdir.c
+PUBLIC int mkdir(char* path);

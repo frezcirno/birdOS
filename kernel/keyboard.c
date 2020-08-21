@@ -64,6 +64,7 @@ PUBLIC void keyboard_handler(int irq)
 	}
 
 	key_pressed = 1;
+	mykey_pressed = 1;
 }
 
 

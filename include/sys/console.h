@@ -22,8 +22,8 @@ typedef struct s_console
 #define SCR_UP	1	/* scroll upward */
 #define SCR_DN	-1	/* scroll downward */
 
-#define SCR_SIZE		(80 * 25)
-#define SCR_WIDTH		 80
+#define SCR_SIZE		(100 * 37)
+#define SCR_WIDTH		 100
 
 #define DEFAULT_CHAR_COLOR	(MAKE_COLOR(BLACK, WHITE))
 #define GRAY_CHAR		(MAKE_COLOR(BLACK, BLACK) | BRIGHT)

@@ -28,6 +28,11 @@ EXTERN	int	key_pressed; /**
 			      * to wake up TASK_TTY when
 			      * a key is pressed
 			      */
+EXTERN int mykey_pressed; /**
+					* used for flappybird
+					* to fly the bird when
+					* a key is pressed
+					*/
 
 EXTERN	struct tss	tss;
 EXTERN	struct proc*	p_proc_ready;
