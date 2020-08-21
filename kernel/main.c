@@ -240,7 +240,7 @@ void TestA()
     // const char bufw[80] = {0};
     //  const int rd_bytes = 3;
     //  char bufr[rd_bytes];
-    sl();
+    //sl();
     clear();
     printf("                        ==================================\n");
     printf("                                     Geniux v1.0.0        \n");
@@ -335,6 +335,10 @@ void TestA()
         else if (strcmp(cmd, "run2048") == 0)
         {
             start2048Game(fd_stdin, fd_stdout);
+        }
+        else if (strcmp(cmd, "runPushBox") == 0)
+        {
+            runPushBox(fd_stdin, fd_stdout);
         }
         else if (strcmp(cmd, "clear") == 0)
         {
