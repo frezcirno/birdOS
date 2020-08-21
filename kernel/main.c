@@ -240,8 +240,8 @@ void TestA()
     // const char bufw[80] = {0};
     //  const int rd_bytes = 3;
     //  char bufr[rd_bytes];
-    // sl();
-    // clear();
+    sl();
+    clear();
     printf("                        ==================================\n");
     printf("                                     Geniux v1.0.0        \n");
     printf("                                 Kernel on Orange's       \n");

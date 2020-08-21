@@ -22,629 +22,444 @@
 /*****************************************************************************
  *                                sl
  *****************************************************************************/
-/**
- * An animation for sl
- 
- 
-                                                                  
-                                                                          
 
+
+PUBLIC void sl(){
+
+  int delay_time = 10000;
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                ************             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                  ****************                                          \n");
+  printf("                         *******                                            \n");
+  printf("                           ***                                              \n");
+  printf("                            *                                               \n");
+  printf("                                                                            \n");
+  printf(" ##   ##   ##  #######  ##        #####     #####       ##  ##     #######  \n");
+  printf(" ##   ##   ##  ##       ##       ##    #   ##   ##     ###  ###    ##       \n");
+  printf("  ##  ##  ##   #######  ##      ##        ##     ##   ##  ##  ##   #######  \n");
+  printf("   ###  ###    ##       ##       ##    #   ##   ##   ##   ##   ##  ##       \n");
+  printf("    ##  ##     #######  #######   #####     #####    ##   ##   ##  #######  \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");                      
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");                      
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");                      
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                          ##\n");
+  printf("                                                                          ##\n");
+  printf("                                                                          ##\n");
+  printf("                                                                          ##\n");
+  printf("                                                                          ##\n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");                      
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                    ####### \n");
+  printf("                                                                    ##    ##\n");
+  printf("                                                                    ######  \n");
+  printf("                                                                    ##    ##\n");
+  printf("                                                                    ####### \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");                      
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                              #######   ####\n");
+  printf("                                                              ##    ##    ##\n");
+  printf("                                                              ######      ##\n");
+  printf("                                                              ##    ##    ##\n");
+  printf("                                                              #######   ####\n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("                                                                            \n");                      
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                        #######   ######  ##\n");
+  printf("                                                        ##    ##    ##    ##\n");
+  printf("                                                        ######      ##    ##\n");
+  printf("                                                        ##    ##    ##    ##\n");
+  printf("                                                        #######   ######  ##\n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                  #######   ######  ########\n");
+  printf("                                                  ##    ##    ##    ##     #\n");
+  printf("                                                  ######      ##    ########\n");
+  printf("                                                  ##    ##    ##    ##  ##  \n");
+  printf("                                                  #######   ######  ##    ##\n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                            #######   ######  ########   ###\n");
+  printf("                                            ##    ##    ##    ##     ##  ## \n");
+  printf("                                            ######      ##    ########   ## \n");
+  printf("                                            ##    ##    ##    ##  ##     ## \n");
+  printf("                                            #######   ######  ##    ###  ###\n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                      #######   ######  ########   #####    \n");
+  printf("                                      ##    ##    ##    ##     ##  ##   ##  \n");
+  printf("                                      ######      ##    ########   ##    ## \n");
+  printf("                                      ##    ##    ##    ##  ##     ##   ##  \n");
+  printf("                                      #######   ######  ##    ###  #####    \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                #######   ######  ########   #####          \n");
+  printf("                                ##    ##    ##    ##     ##  ##   ##        \n");
+  printf("                                ######      ##    ########   ##    ##  #####\n");
+  printf("                                ##    ##    ##    ##  ##     ##   ##        \n");
+  printf("                                #######   ######  ##    ###  #####          \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                ************             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                          #######   ######  ########   #####                \n");
+  printf("                          ##    ##    ##    ##     ##  ##   ##             #\n");
+  printf("                          ######      ##    ########   ##    ##  #######  ##\n");
+  printf("                          ##    ##    ##    ##  ##     ##   ##             #\n");
+  printf("                          #######   ######  ##    ###  #####                \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                ************             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                  ****************                                          \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                    #######   ######  ########   #####                ######\n");
+  printf("                    ##    ##    ##    ##     ##  ##   ##             ##    #\n");
+  printf("                    ######      ##    ########   ##    ##  #######  ##      \n");
+  printf("                    ##    ##    ##    ##  ##     ##   ##             ##    #\n");
+  printf("                    #######   ######  ##    ###  #####                ######\n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                ************             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                  ****************                                          \n");
+  printf("                         *******                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("              #######   ######  ########   #####                ######      \n");
+  printf("              ##    ##    ##    ##     ##  ##   ##             ##    ##   ##\n");
+  printf("              ######      ##    ########   ##    ##  #######  ##      ##    \n");
+  printf("              ##    ##    ##    ##  ##     ##   ##             ##    ##   # \n");
+  printf("              #######   ######  ##    ###  #####                ######     #\n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                ************             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                  ****************                                          \n");
+  printf("                         *******                                            \n");
+  printf("                           ***                                              \n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("        #######   ######  ########   #####                ######      ######\n");
+  printf("        ##    ##    ##    ##     ##  ##   ##             ##    ##   ##      \n");
+  printf("        ######      ##    ########   ##    ##  #######  ##      ##    ##### \n");
+  printf("        ##    ##    ##    ##  ##     ##   ##             ##    ##   #      #\n");
+  printf("        #######   ######  ##    ###  #####                ######     ###### \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time);
+  clear();
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  printf("                                                                            \n");
+  printf("                                                                            \n");
+  printf("                            **************                                  \n");
+  printf("                          **  **********                                    \n");
+  printf("             ******     ***  *********                                      \n");
+  printf("           ** @  ***  ***  ********      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("       ****       ****   *******         xx                             xx  \n");
+  printf("            ********   *******           xx  Bird-OS                    xx  \n");                      
+  printf("            *********  ****              xx  Based on Orange's Kernal   xx  \n");
+  printf("             ******** ****               xx  version 1.0.0              xx  \n");
+  printf("              *************              xx                             xx  \n");
+  printf("                ************             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  \n");
+  printf("                  ****************                                          \n");
+  printf("                         *******                                            \n");
+  printf("                           ***                                              \n");
+  printf("                            *                                               \n");
+  printf("                                                                            \n");
+  printf("    #######   ######  ########   #####                ######      ######    \n");
+  printf("    ##    ##    ##    ##     ##  ##   ##             ##    ##   ##      #   \n");
+  printf("    ######      ##    ########   ##    ##  #######  ##      ##    #####     \n");
+  printf("    ##    ##    ##    ##  ##     ##   ##             ##    ##   #      ##   \n");
+  printf("    #######   ######  ##    ###  #####                ######     ######     \n");
+  printf("                                                                            \n");
+  printf("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+  milli_delay(delay_time+500000);
   
-  
-  
-  
-                                                               
-########  ,######.  ### ####      ##   ###    ###  ##### ######     
-#         ##:  :##   ###    ##          ##     ##    ##   ##      
-#         ##    ##   ##     ##    ##    ##     ##      ###         
-########  #######:   ##     ##    ##    ##     ##      ###        
-#   #  #  ##'        ##     ##    ##    ##     ##     ## ##     
-#   #  #  ##:__,##   ##     ##    ##    ###   ###    ##   ##    
-#####  #   ######   ####   ####   ##      #### ### ##### ######   
-
-
-                                                                               ,        ,
-                                                                              /(        )`
-                                                                              \ \___   / |
-                                                                              /- _  `-/  '
-                                                                             (/\/ \ \   /\
-                                                                             / /   | `    \
-                                                                             O O   ) /    |
-                                                                             `-^--'`<     '
-                                                                            (_.)  _  )   /
-                                                                             `.___/`    /
-                                                                               `-----' /
-                                                                  <----.     __ / __   \
-########  ,######.  ### ####      ##   ###    ###  ##### ######   <----|====O)))==) \) /====
-#         ##:  :##   ###    ##          ##     ##    ##   ##      <----'    `--' `.__,' \
-#         ##    ##   ##     ##    ##    ##     ##      ###                     |        |
-########  #######:   ##     ##    ##    ##     ##      ###                      \       /       /\
-#   #  #  ##'        ##     ##    ##    ##     ##     ## ##                ______( (_  / \______/
-#   #  #  ##:__,##   ##     ##    ##    ###   ###    ##   ##             ,'  ,-----'   |
-#####  #   ######   ####   ####   ##      #### ### ##### ######          `--{__________)
-  
-  
- 
-
- *
- *****************************************************************************/
-PUBLIC void sl()
-{
-    int delay_time = 500;
-
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                           #\n");
-printf("                                                                           #\n");
-printf("                                                                           #\n");
-printf("                                                                           #\n");
-printf("                                                                           #\n");
-printf("                                                                           #\n");
-printf("                                                                           #\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                          ##\n");
-printf("                                                                          # \n");
-printf("                                                                          # \n");
-printf("                                                                          ##\n");
-printf("                                                                          # \n");
-printf("                                                                          # \n");
-printf("                                                                          ##\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                       #####\n");
-printf("                                                                       #    \n");
-printf("                                                                       #    \n");
-printf("                                                                       #####\n");
-printf("                                                                       #   #\n");
-printf("                                                                       #   #\n");
-printf("                                                                       #####\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                      ######\n");
-printf("                                                                      #     \n");
-printf("                                                                      #     \n");
-printf("                                                                      ######\n");
-printf("                                                                      #   # \n");
-printf("                                                                      #   # \n");
-printf("                                                                      ##### \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                  ########  \n");
-printf("                                                                  #         \n");
-printf("                                                                  #         \n");
-printf("                                                                  ########  \n");
-printf("                                                                  #   #  #  \n");
-printf("                                                                  #   #  #  \n");
-printf("                                                                  #####  #  \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                 ########  ,\n");
-printf("                                                                 #         #\n");
-printf("                                                                 #         #\n");
-printf("                                                                 ########  #\n");
-printf("                                                                 #   #  #  #\n");
-printf("                                                                 #   #  #  #\n");
-printf("                                                                 #####  #   \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                               ########  ,##\n");
-printf("                                                               #         ##:\n");
-printf("                                                               #         ## \n");
-printf("                                                               ########  ###\n");
-printf("                                                               #   #  #  ##'\n");
-printf("                                                               #   #  #  ##:\n");
-printf("                                                               #####  #   ##\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                            ########  ,#####\n");
-printf("                                                            #         ##:  :\n");
-printf("                                                            #         ##    \n");
-printf("                                                            ########  ######\n");
-printf("                                                            #   #  #  ##'   \n");
-printf("                                                            #   #  #  ##:__,\n");
-printf("                                                            #####  #   #####\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                         ########  ,######. \n");
-printf("                                                         #         ##:  :## \n");
-printf("                                                         #         ##    ## \n");
-printf("                                                         ########  #######: \n");
-printf("                                                         #   #  #  ##'      \n");
-printf("                                                         #   #  #  ##:__,## \n");
-printf("                                                         #####  #   ######  \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                       ########  ,######.  #\n");
-printf("                                                       #         ##:  :##   \n");
-printf("                                                       #         ##    ##   \n");
-printf("                                                       ########  #######:   \n");
-printf("                                                       #   #  #  ##'        \n");
-printf("                                                       #   #  #  ##:__,##   \n");
-printf("                                                       #####  #   ######    \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                     ########  ,######.  ###\n");
-printf("                                                     #         ##:  :##   ##\n");
-printf("                                                     #         ##    ##   ##\n");
-printf("                                                     ########  #######:   ##\n");
-printf("                                                     #   #  #  ##'        ##\n");
-printf("                                                     #   #  #  ##:__,##   ##\n");
-printf("                                                     #####  #   ######   ###\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                  ########  ,######.  ### ##\n");
-printf("                                                  #         ##:  :##   ###  \n");
-printf("                                                  #         ##    ##   ##   \n");
-printf("                                                  ########  #######:   ##   \n");
-printf("                                                  #   #  #  ##'        ##   \n");
-printf("                                                  #   #  #  ##:__,##   ##   \n");
-printf("                                                  #####  #   ######   ####  \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                ########  ,######.  ### ####\n");
-printf("                                                #         ##:  :##   ###    \n");
-printf("                                                #         ##    ##   ##     \n");
-printf("                                                ########  #######:   ##     \n");
-printf("                                                #   #  #  ##'        ##     \n");
-printf("                                                #   #  #  ##:__,##   ##     \n");
-printf("                                                #####  #   ######   ####   #\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                             ########  ,######.  ### ####   \n");
-printf("                                             #         ##:  :##   ###    ## \n");
-printf("                                             #         ##    ##   ##     ## \n");
-printf("                                             ########  #######:   ##     ## \n");
-printf("                                             #   #  #  ##'        ##     ## \n");
-printf("                                             #   #  #  ##:__,##   ##     ## \n");
-printf("                                             #####  #   ######   ####   ####\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                        ########  ,######.  ### ####      ##\n");
-printf("                                        #         ##:  :##   ###    ##      \n");
-printf("                                        #         ##    ##   ##     ##    ##\n");
-printf("                                        ########  #######:   ##     ##    ##\n");
-printf("                                        #   #  #  ##'        ##     ##    ##\n");
-printf("                                        #   #  #  ##:__,##   ##     ##    ##\n");
-printf("                                        #####  #   ######   ####   ####   ##\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                    ########  ,######.  ### ####      ##   #\n");
-printf("                                    #         ##:  :##   ###    ##          \n");
-printf("                                    #         ##    ##   ##     ##    ##    \n");
-printf("                                    ########  #######:   ##     ##    ##    \n");
-printf("                                    #   #  #  ##'        ##     ##    ##    \n");
-printf("                                    #   #  #  ##:__,##   ##     ##    ##    \n");
-printf("                                    #####  #   ######   ####   ####   ##    \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                ########  ,######.  ### ####      ##   ###  \n");
-printf("                                #         ##:  :##   ###    ##          ##  \n");
-printf("                                #         ##    ##   ##     ##    ##    ##  \n");
-printf("                                ########  #######:   ##     ##    ##    ##  \n");
-printf("                                #   #  #  ##'        ##     ##    ##    ##  \n");
-printf("                                #   #  #  ##:__,##   ##     ##    ##    ### \n");
-printf("                                #####  #   ######   ####   ####   ##      ##\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                            ########  ,######.  ### ####      ##   ###    ##\n");
-printf("                            #         ##:  :##   ###    ##          ##     #\n");
-printf("                            #         ##    ##   ##     ##    ##    ##     #\n");
-printf("                            ########  #######:   ##     ##    ##    ##     #\n");
-printf("                            #   #  #  ##'        ##     ##    ##    ##     #\n");
-printf("                            #   #  #  ##:__,##   ##     ##    ##    ###   ##\n");
-printf("                            #####  #   ######   ####   ####   ##      #### #\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                       ########  ,######.  ### ####      ##   ###    ###   #\n");
-printf("                       #         ##:  :##   ###    ##          ##     ##    \n");
-printf("                       #         ##    ##   ##     ##    ##    ##     ##    \n");
-printf("                       ########  #######:   ##     ##    ##    ##     ##    \n");
-printf("                       #   #  #  ##'        ##     ##    ##    ##     ##    \n");
-printf("                       #   #  #  ##:__,##   ##     ##    ##    ###   ###    \n");
-printf("                       #####  #   ######   ####   ####   ##      #### ###  #\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                  ########  ,######.  ### ####      ##   ###    ###   ##### \n");
-printf("                  #         ##:  :##   ###    ##          ##     ##     ##  \n");
-printf("                  #         ##    ##   ##     ##    ##    ##     ##       ##\n");
-printf("                  ########  #######:   ##     ##    ##    ##     ##       ##\n");
-printf("                  #   #  #  ##'        ##     ##    ##    ##     ##      ## \n");
-printf("                  #   #  #  ##:__,##   ##     ##    ##    ###   ###     ##  \n");
-printf("                  #####  #   ######   ####   ####   ##      #### ###  ##### \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("             ########  ,######.  ### ####      ##   ###    ###   ##### #####\n");
-printf("             #         ##:  :##   ###    ##          ##     ##     ##   ##  \n");
-printf("             #         ##    ##   ##     ##    ##    ##     ##       ###    \n");
-printf("             ########  #######:   ##     ##    ##    ##     ##       ###    \n");
-printf("             #   #  #  ##'        ##     ##    ##    ##     ##      ## ##   \n");
-printf("             #   #  #  ##:__,##   ##     ##    ##    ###   ###     ##   ##  \n");
-printf("             #####  #   ######   ####   ####   ##      #### ###  ##### #####\n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time);
-clear();
-
-
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("                                                                            \n");
-printf("       ########  ,######.   ### ####     ##   ###    ###   ##### ######     \n");
-printf("       #         ##:  :##   ###    ##          ##     ##     ##   ##        \n");
-printf("       #         ##    ##   ##     ##    ##    ##     ##       ###          \n");
-printf("       ########  #######:   ##     ##    ##    ##     ##       ###          \n");
-printf("       #   #  #  ##'        ##     ##    ##    ##     ##      ## ##         \n");
-printf("       #   #  #  ##:__,##   ##     ##    ##    ###   ###     ##   ##        \n");
-printf("       #####  #   ######   ####   ####   ##      #### ###  ##### ######     \n");
-printf(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-milli_delay(delay_time + 30000);
-clear();
-
-
-
-printf("                                                   ,        ,\n");
-printf("                                                  /(        )`\n");
-printf("                                                  \\ \\___   / |\n"); 
-printf("                                                  /- _  `-/  '\n"); 
-printf("  Create By Evaporated Genius:                    (/\\/ \\ \\   /\\ \n"); 
-printf("                                                 / /   | `    \\ \n"); 
-printf("       Wenzhe Zhang                              O O   ) /    | \n"); 
-printf("                                                 `-^--'`<     ' \n"); 
-printf("       Letong Han                               (_.)  _  )   / \n"); 
-printf("                                                 `.___/`    / \n"); 
-printf("       Tianyou Song                                `-----' / \n"); 
-printf("                                      <----.     __ / __   \\  \n"); 
-printf("                                      <----|====O)))==) \\) /==== \n"); 
-printf("                                      <----'    `--' `.__,' \\ \n"); 
-printf("                                                   |        | \n"); 
-printf("                                                    \\       /       /\\ \n"); 
-printf("                                               ______( (_  / \\______/ \n"); 
-printf("                                             ,'  ,-----'   | \n"); 
-printf("                                             `--{__________) \n");   
-milli_delay(delay_time+30000);
-
-clear();
-
-
 }
