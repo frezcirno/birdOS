@@ -147,7 +147,8 @@ void runPushBox(int fd_stdin, int fd_stdout)
     initPushBox();
     DrawMap();
     char option[10];
-    while (read(fd_stdin, option, 1))
+    int quit=0;
+    while (!quit && read(fd_stdin, option, 1))
     {
         char key =option[0];    //_gettch()可以用来监听键盘按键
         switch (key)
@@ -163,6 +164,9 @@ void runPushBox(int fd_stdin, int fd_stdout)
             break;
         case 's':
             Move(1, 0);
+            break;
+        case 'q':
+            quit = 1;
             break;
         }
         if(resultCheck()) break; // 检查是否完成

@@ -340,6 +340,10 @@ void TestA()
         {
             runPushBox(fd_stdin, fd_stdout);
         }
+        else if (strcmp(cmd, "clock") == 0)
+        {
+            clock(fd_stdin, fd_stdout);
+        }
         else if (strcmp(cmd, "clear") == 0)
         {
             clear();
@@ -420,6 +424,8 @@ void TestA()
 //二号终端
 void TestB()
 {
+    spin("");
+
     char tty_name[] = "/dev_tty1";
 
     int fd_stdin  = open(tty_name, O_RDWR);
@@ -462,7 +468,7 @@ void TestB()
 
 void TestC()
 {
-    spin("TestC");
+    spin("");
 }
 
 

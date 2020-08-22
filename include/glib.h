@@ -2,7 +2,7 @@
 #include "font.h"
 #include "BGA.h"
 
-#define MAX_SHEETS   256
+#define MAX_SHEETS 256
 #define SHEET_IN_USE 1
 
 typedef struct s_sheet
@@ -31,22 +31,22 @@ extern int scr_bpp;
 
 extern SHTCTL *ctl;
 
-#define PEN_BLACK        0  //黑
-#define PEN_RED          1  //梁红
-#define PEN_LIGHT_GREEN  2  //亮绿
-#define PEN_LIGHT_YELLOW 3  //亮黄
-#define PEN_LIGHT_BLUE   4  //亮蓝
-#define PEN_LIGHT_PURPLE 5  //亮紫
-#define PEN_BLUE         6  //浅亮蓝
-#define PEN_WHITE        7  //白
-#define PEN_LIGHT_GRAY   8  //亮灰
-#define PEN_DARK_RED     9  //暗红
-#define PEN_DARK_GREEN   10 //暗绿
-#define PEN_DARK_YELLOW  11 //暗黄
-#define PEN_DARK_CLAN    12 //暗青
-#define PEN_DARK_PURPLE  13 //暗紫
-#define PEN_DARK_BLUE    14 //浅暗蓝
-#define PEN_DARK_GRAY    15 //暗灰
+#define PEN_BLACK 0        //黑
+#define PEN_RED 1          //梁红
+#define PEN_LIGHT_GREEN 2  //亮绿
+#define PEN_LIGHT_YELLOW 3 //亮黄
+#define PEN_LIGHT_BLUE 4   //亮蓝
+#define PEN_LIGHT_PURPLE 5 //亮紫
+#define PEN_BLUE 6         //浅亮蓝
+#define PEN_WHITE 7        //白
+#define PEN_LIGHT_GRAY 8   //亮灰
+#define PEN_DARK_RED 9     //暗红
+#define PEN_DARK_GREEN 10  //暗绿
+#define PEN_DARK_YELLOW 11 //暗黄
+#define PEN_DARK_CLAN 12   //暗青
+#define PEN_DARK_PURPLE 13 //暗紫
+#define PEN_DARK_BLUE 14   //浅暗蓝
+#define PEN_DARK_GRAY 15   //暗灰
 
 typedef struct s_canvas
 {
@@ -78,6 +78,8 @@ void putPixel(int x, int y, int color);
 
 void drawTextToClr(unsigned char *dst, int pitch, int x, int y, const char *str,
                    int color, int back);
+
+void drawCircle(int xc, int yc, int r, int color);
 
 void drawCircleTo(unsigned char *buf, int pitch, int xc, int yc, int r,
                   int color);

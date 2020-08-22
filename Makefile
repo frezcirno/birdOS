@@ -34,7 +34,7 @@ OBJS        = kernel/kernel.o lib/syscall.o kernel/start.o kernel/main.o \
 			lib/getpid.o lib/syslog.o lib/fork.o lib/glib.o lib/u_vga16.o lib/BGA.o \
 			mm/main.o mm/func.o mm/memory.o \
 			fs/main.o fs/open.o fs/misc.o fs/read_write.o fs/link.o fs/disklog.o \
-			game/TTT.o game/2048.o game/flappy.o 
+			game/TTT.o game/2048.o game/flappy.o game/pushBox.o game/clock.o game/math.o
 DASMOUTPUT  = kernel.bin.asm
 
 # All Phony Targets
@@ -86,15 +86,12 @@ lib/syscall.o : lib/syscall.asm
 
 qemu: build
 	qemu-system-i386                                 \
-	  -accel tcg,thread=single                       \
-	  -cpu core2duo                                  \
 	  -m 512                                         \
 	  -no-reboot                                     \
-	  -fda a.img                                 \
-      -drive format=raw,file=80m.img                 \
+	  -fda a.img                                     \
+	  -drive format=raw,file=80m.img                 \
 	  -gdb tcp::1234                                 \
 	  -boot d                                        \
 	  -S                                             \
-	  -smp 1                                         \
 	  -vga std &
 	gdb

@@ -115,13 +115,13 @@ void drawLineTo(unsigned char *dst, int pitch, int x0, int y0, int x1, int y1,
     int dy = y1 - y0;           // y偏移量
     int ux = (dx > 0 ? 1 : -1); // x伸展方向
     int uy = (dy > 0 ? 1 : -1); // y伸展方向
-    int dx2 = dx << 1;          // x偏移量乘2
-    int dy2 = dy << 1;          // y偏移量乘2
+    int dx2 = abs(dx << 1);          // x偏移量乘2
+    int dy2 = abs(dy << 1);          // y偏移量乘2
     if (abs(dx) > abs(dy))
     {                                     //以x为增量方向计算
         int e = -dx;                      // e = -0.5 * 2 * dx,把e 用2 * dx* e替换
         int y = y0;                       //起点y坐标
-        for (int x = x0; x < x1; x += ux) //起点x坐标
+        for (int x = x0; x != x1; x += ux) //起点x坐标
         {
             putPixelTo(dst, pitch, x, y, color);
             e = e + dy2; //来自 2*e*dx= 2*e*dx + 2dy  （原来是 e = e + k）
@@ -136,7 +136,7 @@ void drawLineTo(unsigned char *dst, int pitch, int x0, int y0, int x1, int y1,
     {                                     //以y为增量方向计算
         int e = -dy;                      // e = -0.5 * 2 * dy,把e 用2 * dy* e替换
         int x = x0;                       //起点x坐标
-        for (int y = y0; y < y1; y += uy) //起点y坐标
+        for (int y = y0; y != y1; y += uy) //起点y坐标
         {
             putPixelTo(dst, pitch, x, y, color);
             e = e + dx2; //来自 2*e*dy= 2*e*dy + 2dy  （原来是 e = e + k）
@@ -156,13 +156,13 @@ void drawLine(int x0, int y0, int x1, int y1, int color)
     int dy = y1 - y0;           // y偏移量
     int ux = (dx > 0 ? 1 : -1); // x伸展方向
     int uy = (dy > 0 ? 1 : -1); // y伸展方向
-    int dx2 = dx << 1;          // x偏移量乘2
-    int dy2 = dy << 1;          // y偏移量乘2
+    int dx2 = abs(dx << 1);          // x偏移量乘2
+    int dy2 = abs(dy << 1);          // y偏移量乘2
     if (abs(dx) > abs(dy))
-    {                                     //以x为增量方向计算
-        int e = -dx;                      // e = -0.5 * 2 * dx,把e 用2 * dx* e替换
-        int y = y0;                       //起点y坐标
-        for (int x = x0; x < x1; x += ux) //起点x坐标
+    {                                      //以x为增量方向计算
+        int e = -dx;                       // e = -0.5 * 2 * dx,把e 用2 * dx* e替换
+        int y = y0;                        //起点y坐标
+        for (int x = x0; x != x1; x += ux) //起点x坐标
         {
             putPixel(x, y, color);
             e = e + dy2; //来自 2*e*dx= 2*e*dx + 2dy  （原来是 e = e + k）
@@ -174,10 +174,10 @@ void drawLine(int x0, int y0, int x1, int y1, int color)
         }
     }
     else
-    {                                     //以y为增量方向计算
-        int e = -dy;                      // e = -0.5 * 2 * dy,把e 用2 * dy* e替换
-        int x = x0;                       //起点x坐标
-        for (int y = y0; y < y1; y += uy) //起点y坐标
+    {                                      //以y为增量方向计算
+        int e = -dy;                       // e = -0.5 * 2 * dy,把e 用2 * dy* e替换
+        int x = x0;                        //起点x坐标
+        for (int y = y0; y != y1; y += uy) //起点y坐标
         {
             putPixel(x, y, color);
             e = e + dx2; //来自 2*e*dy= 2*e*dy + 2dy  （原来是 e = e + k）
@@ -694,6 +694,35 @@ void movexy(SHEET *sht, int vx0, int vy0)
         // 新的区域只需要绘制新增的部分
         refresh(vx0, vy0, vx0 + sht->bxsize, vy0 + sht->bysize, sht->height,
                 sht->height);
+    }
+}
+
+void drawCircle(int xc, int yc, int r, int color)
+{
+    // Bresenham画圆算法
+    int x = 0, y = r, d = 3 - 2 * r;
+    while (1)
+    {
+        putPixel(xc + x, yc + y, color);
+        putPixel(xc + y, yc + x, color);
+        putPixel(xc + x, yc - y, color);
+        putPixel(xc + y, yc - x, color);
+        putPixel(xc - x, yc + y, color);
+        putPixel(xc - y, yc + x, color);
+        putPixel(xc - x, yc - y, color);
+        putPixel(xc - y, yc - x, color);
+        if (x >= y)
+            break;
+        if (d < 0)
+        {
+            d = d + 4 * x + 6;
+        }
+        else
+        {
+            d = d + 4 * (x - y) + 10;
+            y--;
+        }
+        x++;
     }
 }
 
