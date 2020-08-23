@@ -17,8 +17,7 @@ CC      = gcc -std=c99
 LD      = ld
 ASMBFLAGS   = -I boot/include/
 ASMKFLAGS   = -I include/ -I include/sys/ -f elf
-CFLAGS      = -I include/ -I include/sys/ -c -fno-builtin -g -Wall -m32 -fno-stack-protector
-CFLAGS      = -I ./include/ -c -fno-stack-protector  -minline-all-stringops
+CFLAGS      = -I include/ -I include/sys/ -c -fno-builtin -g -Wall -m32 -fno-stack-protector -minline-all-stringops
 LDFLAGS     = -Ttext $(ENTRYPOINT) -melf_i386
 DASMFLAGS   = -D
 
