@@ -59,38 +59,38 @@ int bar_speed = 8;	//挡板移动速度
 int score;			//得分
 int gamestatus = 1; //游戏状态
 
-unsigned char screen[600 * 800];
-unsigned char bg[600 * 800];
+unsigned char screen[200 * 320];
+unsigned char bg[200 * 320];
 unsigned char birdUP[23 * 32], birdRight[23 * 32], birdDown[23 * 32];
 unsigned char bird[3][23 * 32];
-unsigned char pipeUp[600 * 52];
-unsigned char pipeDown[600 * 52];
+unsigned char pipeUp[200 * 52];
+unsigned char pipeDown[200 * 52];
 
 void showbg() //背景整体左移，最后一列由新的背景替代
 {
 	unsigned char buf[1600];
 	for (int i = 0; i < bar_speed; ++i)
 	{
-		for (int j = 0; j < 600; ++j)
+		for (int j = 0; j < 200; ++j)
 		{
-			buf[j * bar_speed + i] = bg[j * 800 + i];
+			buf[j * bar_speed + i] = bg[j * 320 + i];
 		}
 	}
-	for (int i = 0; i < 800 - bar_speed; ++i)
+	for (int i = 0; i < 320 - bar_speed; ++i)
 	{
-		for (int j = 0; j < 600; ++j)
+		for (int j = 0; j < 200; ++j)
 		{
-			bg[j * 800 + i] = bg[j * 800 + i + bar_speed];
+			bg[j * 320 + i] = bg[j * 320 + i + bar_speed];
 		}
 	}
-	for (int i = 800 - bar_speed; i < 800; ++i)
+	for (int i = 320 - bar_speed; i < 320; ++i)
 	{
-		for (int j = 0; j < 600; ++j)
+		for (int j = 0; j < 200; ++j)
 		{
-			bg[j * 800 + i] = buf[j * bar_speed + (i - 800 + bar_speed)];
+			bg[j * 320 + i] = buf[j * bar_speed + (i - 320 + bar_speed)];
 		}
 	}
-	drawFrom(bg, 800, 0, 0, 800, 600);
+	drawFrom(bg, 320, 0, 0, 320, 200);
 }
 
 void showpipe() // 在背景上增添柱子
@@ -104,12 +104,12 @@ void showpipe() // 在背景上增添柱子
 void showbird() // 在背景上增添小鸟
 {
 	bird_status = (bird_status) % 3;
-	drawFrom(bird[bird_status], 800, bird_x, bird_y, 32, 23);
+	drawFrom(bird[bird_status], 320, bird_x, bird_y, 32, 23);
 }
 void openImg(char *path, unsigned char *Img, int w, int h)
 {
-	int size[3];
 	int fd = open(path, O_RDWR);
+	int size[3];
 	int n = read(fd, size, 3);
 	n = read(fd, Img, w * h);
 	close(fd);
@@ -127,8 +127,8 @@ struct bar newbar()
 void startup() //数据初始化
 {
 	mykey_pressed = 0;
-	high = 600; //初始化边界
-	width = 800;
+	high = 200; //初始化边界
+	width = 320;
 
 	bird_y = high / 2; //初始化小鸟坐标
 	bird_x = 20;
@@ -159,11 +159,11 @@ void startup() //数据初始化
 			bird[2][(j - 2) * 32 + (i - 106)] = buf[j * 140 + i];
 		}
 	}
-	openImg("/sky", bg, 800, 600);
-	openImg("/wall", pipeUp, 52, 600);
-	for (int i = 0; i < 52 * 600; ++i)
+	openImg("/sky", bg, 320, 200);
+	openImg("/wall", pipeUp, 52, 200);
+	for (int i = 0; i < 52 * 200; ++i)
 	{
-		pipeDown[i] = pipeUp[52 * 600 - i - 1];
+		pipeDown[i] = pipeUp[52 * 200 - i - 1];
 	}
 	gamestatus = 1;
 }
@@ -172,7 +172,7 @@ void show() //显示界面
 	showbg();
 	showpipe();
 	showbird();
-	drawFrom(screen, 800, 0, 0, 800, 600);
+	drawFrom(screen, 320, 0, 0, 320, 200);
 }
 void updateWithoutInput() //与用户输入无关的更新
 {
@@ -253,8 +253,8 @@ PUBLIC void waitkey()
 
 PUBLIC void startflappyBird(int fd_stdin, int fd_stdout)
 {
-	openImg("/start", screen, 800, 600);
-	drawFrom(screen, 800, 0, 0, 800, 600);
+	openImg("/start", screen, 320, 200);
+	drawFrom(screen, 320, 0, 0, 320, 200);
 	// milli_delay(1000);
 	startup(); //数据初始化
 	while (gamestatus)
@@ -262,7 +262,7 @@ PUBLIC void startflappyBird(int fd_stdin, int fd_stdout)
 		show();								  //显示界面
 		updateWithoutInput();				  //与用户输入无关的更新
 		updateWithInput(fd_stdin, fd_stdout); //与用户输入有关的更新
-											  // milli_delay(600);
+											  // milli_delay(200);
 	}
 	printf("score:%d \n", score);
 	waitkey();
