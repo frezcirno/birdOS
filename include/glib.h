@@ -150,3 +150,9 @@ void free_sheet(SHEET *sht);
 
 void drawWindowTo(unsigned char *buf, int pitch, int xsize, int ysize,
                   const char *title);
+
+void drawCharClr(int x, int y, char ch, int color, int bg);
+
+void drawFrom(unsigned char *from, int pitch, int x, int y, int w, int h);
+
+void drawFromTo(unsigned char *dst, unsigned char *from, int pitch, int x, int y, int w, int h);

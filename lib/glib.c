@@ -115,12 +115,12 @@ void drawLineTo(unsigned char *dst, int pitch, int x0, int y0, int x1, int y1,
     int dy = y1 - y0;           // y偏移量
     int ux = (dx > 0 ? 1 : -1); // x伸展方向
     int uy = (dy > 0 ? 1 : -1); // y伸展方向
-    int dx2 = abs(dx << 1);          // x偏移量乘2
-    int dy2 = abs(dy << 1);          // y偏移量乘2
+    int dx2 = abs(dx << 1);     // x偏移量乘2
+    int dy2 = abs(dy << 1);     // y偏移量乘2
     if (abs(dx) > abs(dy))
-    {                                     //以x为增量方向计算
-        int e = -dx;                      // e = -0.5 * 2 * dx,把e 用2 * dx* e替换
-        int y = y0;                       //起点y坐标
+    {                                      //以x为增量方向计算
+        int e = -dx;                       // e = -0.5 * 2 * dx,把e 用2 * dx* e替换
+        int y = y0;                        //起点y坐标
         for (int x = x0; x != x1; x += ux) //起点x坐标
         {
             putPixelTo(dst, pitch, x, y, color);
@@ -133,9 +133,9 @@ void drawLineTo(unsigned char *dst, int pitch, int x0, int y0, int x1, int y1,
         }
     }
     else
-    {                                     //以y为增量方向计算
-        int e = -dy;                      // e = -0.5 * 2 * dy,把e 用2 * dy* e替换
-        int x = x0;                       //起点x坐标
+    {                                      //以y为增量方向计算
+        int e = -dy;                       // e = -0.5 * 2 * dy,把e 用2 * dy* e替换
+        int x = x0;                        //起点x坐标
         for (int y = y0; y != y1; y += uy) //起点y坐标
         {
             putPixelTo(dst, pitch, x, y, color);
@@ -156,8 +156,8 @@ void drawLine(int x0, int y0, int x1, int y1, int color)
     int dy = y1 - y0;           // y偏移量
     int ux = (dx > 0 ? 1 : -1); // x伸展方向
     int uy = (dy > 0 ? 1 : -1); // y伸展方向
-    int dx2 = abs(dx << 1);          // x偏移量乘2
-    int dy2 = abs(dy << 1);          // y偏移量乘2
+    int dx2 = abs(dx << 1);     // x偏移量乘2
+    int dy2 = abs(dy << 1);     // y偏移量乘2
     if (abs(dx) > abs(dy))
     {                                      //以x为增量方向计算
         int e = -dx;                       // e = -0.5 * 2 * dx,把e 用2 * dx* e替换
@@ -303,6 +303,13 @@ void drawCharTo(unsigned char *dst, int pitch, int x, int y, char ch, int color)
 void drawChar(int x, int y, char ch, int color)
 {
     const unsigned char *font_data = &fonts.Bitmap[16 * fontsmap[ch]];
+    drawGlyph(x, y, font_data, color);
+}
+
+void drawCharClr(int x, int y, char ch, int color, int bg)
+{
+    const unsigned char *font_data = &fonts.Bitmap[16 * fontsmap[ch]];
+    fillRect(x, y, x + 8, y + 16, bg);
     drawGlyph(x, y, font_data, color);
 }
 
@@ -752,5 +759,31 @@ void drawCircleTo(unsigned char *buf, int pitch, int xc, int yc, int r, int colo
             y--;
         }
         x++;
+    }
+}
+
+void drawFrom(unsigned char *from, int pitch, int x, int y, int w, int h)
+{
+    w += x;
+    h += y;
+    for (int i = x; i < w; i++)
+    {
+        for (int j = y; j < h; j++)
+        {
+            putPixel(x, y, from[y * pitch + x]);
+        }
+    }
+}
+
+void drawFromTo(unsigned char *dst, unsigned char *from, int pitch, int x, int y, int w, int h)
+{
+    w += x;
+    h += y;
+    for (int i = x; i < w; i++)
+    {
+        for (int j = y; j < h; j++)
+        {
+            putPixelTo(dst, pitch, x, y, from[y * pitch + x]);
+        }
     }
 }
