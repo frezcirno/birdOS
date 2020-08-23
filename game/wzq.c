@@ -240,7 +240,7 @@ void game(int fd_stdin, int fd_stdout)
 	read(fd_stdin, hhh, 3);
 	read(fd_stdin, lll, 3);
 	int ret = 0;
-	char board[ROW][COL] = { 0 };
+	char board[ROW][COL] = { ' ' };
 	InitBoard(board, hhh, lll);
 
 	// 下棋
