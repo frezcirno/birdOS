@@ -298,7 +298,7 @@ int runWZQ(int fd_stdin, int fd_stdout) {
 		switch (input)
 		{
 		case 1:
-			game(int fd_stdin, int fd_stdout);
+			game(fd_stdin, fd_stdout);
 			break;
 		case 0:
 			printf("ÍË³öÓÎÏ·\n");
