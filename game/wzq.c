@@ -113,7 +113,7 @@ void PlayerMove(char board[ROW][COL], int row, int col,int fd_stdin,int fd_stdou
 	int y = 0;
 
 	printf("玩家走:>\n");
-	printf("请输入坐标(%d,%d): >", row, col)
+	printf("请输入坐标(%d,%d): >", row, col);
 	while (1)
 	{
 		//scanf("%d %d", &x, &y);
