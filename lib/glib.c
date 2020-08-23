@@ -761,3 +761,25 @@ void drawCircleTo(unsigned char *buf, int pitch, int xc, int yc, int r, int colo
         x++;
     }
 }
+
+void drawFrom(unsigned char *from, int pitch, int x, int y, int w, int h)
+{
+    for (int i = x; i < w; i++)
+    {
+        for (int j = y; j < h; j++)
+        {
+            putPixel(x, y, from[y * pitch + x]);
+        }
+    }
+}
+
+void drawFromTo(unsigned char *dst, unsigned char *from, int pitch, int x, int y, int w, int h)
+{
+    for (int i = x; i < w; i++)
+    {
+        for (int j = y; j < h; j++)
+        {
+            putPixelTo(dst, pitch, x, y, from[y * pitch + x]);
+        }
+    }
+}

@@ -11,19 +11,23 @@
 /* CONSOLE */
 typedef struct s_console
 {
-	unsigned int	crtc_start; /* set CRTC start addr reg */
-	unsigned int	orig;	    /* start addr of the console */
+	// unsigned int	crtc_start; /* set CRTC start addr reg */
+	// unsigned int	orig;	    /* start addr of the console */
 	unsigned int	con_size;   /* how many words does the console have */
 	unsigned int	cursor;
 	int		is_full;
 }CONSOLE;
 
+extern int headerHeight; 
+
+extern int colormode;
 
 #define SCR_UP	1	/* scroll upward */
 #define SCR_DN	-1	/* scroll downward */
 
 #define SCR_SIZE		(100 * 37)
 #define SCR_WIDTH		 100
+#define SCR_HEIGHT		 37
 
 #define DEFAULT_CHAR_COLOR	(MAKE_COLOR(BLACK, WHITE))
 #define GRAY_CHAR		(MAKE_COLOR(BLACK, BLACK) | BRIGHT)

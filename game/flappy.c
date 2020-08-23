@@ -66,32 +66,6 @@ unsigned char bird[3][23 * 32];
 unsigned char pipeUp[600 * 52];
 unsigned char pipeDown[600 * 52];
 
-void showScreen()
-{
-	unsigned char *p = vram;
-	for (int y = 0; y < 600; y++)
-	{
-		for (int x = 0; x < 800; x++)
-		{
-			p[y * 800 + x] = screen[y * 800 + x];
-		}
-	}
-}
-
-void addScreen(unsigned char *Img, int w, int h, int _x, int _y)
-{
-	for (int y = 0; y < h; y++)
-	{
-		if (y + _y >= 600 || y + _y < 0)
-			break;
-		for (int x = 0; x < w; x++)
-		{
-			if (x + _x >= 800 || x + _x < 0)
-				break;
-			screen[(y + _y) * 800 + x + _x] = Img[y * w + x];
-		}
-	}
-}
 void showbg() //背景整体左移，最后一列由新的背景替代
 {
 	unsigned char buf[1600];
@@ -116,26 +90,26 @@ void showbg() //背景整体左移，最后一列由新的背景替代
 			bg[j * 800 + i] = buf[j * bar_speed + (i - 800 + bar_speed)];
 		}
 	}
-	addScreen(bg, 800, 600, 0, 0);
+	drawFrom(bg, 800, 0, 0, 800, 600);
 }
 
 void showpipe() // 在背景上增添柱子
 {
 	for (int i = 0; i < bar_num; ++i)
 	{
-		addScreen(pipeUp, bar_width, high - bars[i].bar_yDown, bars[i].bar_x, bars[i].bar_yDown);
-		addScreen(pipeDown, bar_width, bars[i].bar_yTop, bars[i].bar_x, 0);
+		drawFrom(pipeUp, bar_width, bars[i].bar_x, bars[i].bar_yDown, bar_width, high - bars[i].bar_yDown);
+		drawFrom(pipeDown, bar_width, bars[i].bar_x, 0, bar_width, bars[i].bar_yTop);
 	}
 }
 void showbird() // 在背景上增添小鸟
 {
 	bird_status = (bird_status) % 3;
-	addScreen(bird[bird_status], 32, 23, bird_x, bird_y);
+	drawFrom(bird[bird_status], 800, bird_x, bird_y, 32, 23);
 }
 void openImg(char *path, unsigned char *Img, int w, int h)
 {
-	int fd = open(path, O_RDWR);
 	int size[3];
+	int fd = open(path, O_RDWR);
 	int n = read(fd, size, 3);
 	n = read(fd, Img, w * h);
 	close(fd);
@@ -198,7 +172,7 @@ void show() //显示界面
 	showbg();
 	showpipe();
 	showbird();
-	showScreen();
+	drawFrom(screen, 800, 0, 0, 800, 600);
 }
 void updateWithoutInput() //与用户输入无关的更新
 {
@@ -251,7 +225,7 @@ void updateWithoutInput() //与用户输入无关的更新
 		bar_num++;
 	}
 }
-void updateWithInpute(int fd_stdin, int fd_stdout) //与用户输入有关的更新
+void updateWithInput(int fd_stdin, int fd_stdout) //与用户输入有关的更新
 {
 	if (mykey_pressed == 1)
 	{
@@ -268,7 +242,7 @@ void updateWithInpute(int fd_stdin, int fd_stdout) //与用户输入有关的更
 
 PUBLIC void waitkey()
 {
-	milli_delay(10000);
+	// milli_delay(10000);
 	mykey_pressed = 0;
 	while (mykey_pressed == 0)
 	{
@@ -280,15 +254,15 @@ PUBLIC void waitkey()
 PUBLIC void startflappyBird(int fd_stdin, int fd_stdout)
 {
 	openImg("/start", screen, 800, 600);
-	showScreen();
-	milli_delay(4000);
+	drawFrom(screen, 800, 0, 0, 800, 600);
+	// milli_delay(1000);
 	startup(); //数据初始化
 	while (gamestatus)
 	{
-		show();								   //显示界面
-		updateWithoutInput();				   //与用户输入无关的更新
-		updateWithInpute(fd_stdin, fd_stdout); //与用户输入有关的更新
-		milli_delay(600);
+		show();								  //显示界面
+		updateWithoutInput();				  //与用户输入无关的更新
+		updateWithInput(fd_stdin, fd_stdout); //与用户输入有关的更新
+											  // milli_delay(600);
 	}
 	printf("score:%d \n", score);
 	waitkey();
