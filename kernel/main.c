@@ -431,51 +431,13 @@ void TestA()
 //二号终端
 void TestB()
 {
-    spin("");
-
-    char tty_name[] = "/dev_tty1";
-
-    int fd_stdin  = open(tty_name, O_RDWR);
-    assert(fd_stdin  == 0);
-    int fd_stdout = open(tty_name, O_RDWR);
-    assert(fd_stdout == 1);
-
-    char rdbuf[128];
-    // char cmd[8];
-    // char filename[120];
-    // char buf[1024];
-    // int m, n;
-    // printf("                        ==================================\n");
-    // printf("                                    File Manager           \n");
-    // printf("                                 Kernel on Orange's \n\n");
-    // printf("                        ==================================\n");
-    while (1) {
-        printf("$ ");
-        int r = read(fd_stdin, rdbuf, 70);
-        rdbuf[r] = 0;
-
-
-
-        if (strcmp(rdbuf, "help") == 0)
-        {
-            printf("=============================================================================\n");
-            printf("Command List     :\n");
-            printf("6. help                    : Display the help message\n");
-            printf("==============================================================================\n");
-        }
-        else
-        {
-            printf("Command not found, Please check!\n");
-            continue;
-        }
-    }
-    assert(0); /* never arrive here */
+    for(;;);
 }
 
 
 void TestC()
 {
-    spin("");
+    for(;;);
 }
 
 
@@ -500,12 +462,10 @@ PUBLIC void panic(const char *fmt, ...)
 
 void clear()
 {
-    unsigned char *p = vram;
-    for (int i = 0; i < scr_x * scr_y; ++i)
+    for (int i = 0; i < SCR_HEIGHT; i++)
     {
-        p[i] = 0;
+        printf("\n");
     }
-    console_table[current_console].crtc_start = 0;
     console_table[current_console].cursor = 0;
 }
 
