@@ -250,7 +250,7 @@ void TestA()
 
     while (1)
     {
-        printf("[root@localhost: %s] $ ", current_dirr); // 打印当前路径
+        printf("[root@BirdOS: %s] $ ", current_dirr); // 打印当前路径
         int r = read(fd_stdin, rdbuf, 512);
         rdbuf[r] = 0;
 
@@ -478,24 +478,24 @@ void clear()
 
 void help()
 {
-    printf("==========================Geniux help info====================================\n");
-    printf("Command List              :\n");
-    printf("1. process                : A process manage,show you all process-info here\n");
-    printf("2. filemng                : Run the file manager\n");
-    printf("3. clear                  : Clear the screen\n");
-    printf("4. help                   : Show this help message\n");
-    printf("5. ls                     : List all files in current directory\n");
-    printf("6. touch     [filename]   : Create a new file in current directory\n");
-    printf("7. rm        [filename]   : Delete a file in current directory\n");
-    printf("8. cat       [filename]   : Print the content of a file in current directory\n");
-    printf("9. vi        [filename]   : Write new content at the end of the file\n");
-    printf("10. mkdir    [dirname]    : Create a new directory in current directory\n");
-    printf("11. cd       [dirname]    : Go to a directory in current directory\n");
-    printf("12. runttt                : Run a small game on this OS\n");
-    printf("13. run2048               : Run 2048 game on this OS\n");
-    printf("14. runSnake              : Run Greedysnake game on this OS\n");
-    printf("15. runWZQ                : Run a chess game on this OS\n");
-    printf("==============================================================================\n");
+    printf("=========================================BirdOS help info===========================================\n");
+    printf("Command List                       :\n");
+    printf("1. process                         : A process manage,show you all process-info here\n");
+    printf("2. filemng                         : Run the file manager\n");
+    printf("3. clear                           : Clear the screen\n");
+    printf("4. help                            : Show this help message\n");
+    printf("5. ls                              : List all files in current directory\n");
+    printf("6. touch     [filename]            : Create a new file in current directory\n");
+    printf("7. rm        [filename]            : Delete a file in current directory\n");
+    printf("8. cat       [filename]            : Print the content of a file in current directory\n");
+    printf("9. vi        [filename]            : Write new content at the end of the file\n");
+    printf("10. mkdir    [dirname]             : Create a new directory in current directory\n");
+    printf("11. cd       [dirname]             : Go to a directory in current directory\n");
+    printf("12. runttt                         : Run a small game on this OS\n");
+    printf("13. run2048                        : Run 2048 game on this OS\n");
+    printf("14. runSnake                       : Run Greedysnake game on this OS\n");
+    printf("15. runWZQ                         : Run a chess game on this OS\n");
+    printf("====================================================================================================\n");
 }
 
 void ProcessManage()
