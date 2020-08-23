@@ -344,6 +344,10 @@ void TestA()
         {
             clock(fd_stdin, fd_stdout);
         }
+        else if (strcmp(cmd, "runSnake") == 0)
+        {
+            runSnake(fd_stdin, fd_stdout);
+        }
         else if (strcmp(cmd, "clear") == 0)
         {
             clear();
