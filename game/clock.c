@@ -109,6 +109,8 @@ void clock(int fd_stdin, int fd_stdout)
             int lty = texty - 8;
             fillRect(ltx, lty, ltx + 8 * 8, lty + 16, PEN_BLACK);
             drawText(ltx, lty, text, PEN_WHITE);
+            drawCircle(clockx, clocky, 1, PEN_RED);
+            drawCircle(clockx, clocky, 2, PEN_RED);
         }
     }
 }

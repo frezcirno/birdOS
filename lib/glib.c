@@ -764,6 +764,8 @@ void drawCircleTo(unsigned char *buf, int pitch, int xc, int yc, int r, int colo
 
 void drawFrom(unsigned char *from, int pitch, int x, int y, int w, int h)
 {
+    w += x;
+    h += y;
     for (int i = x; i < w; i++)
     {
         for (int j = y; j < h; j++)
@@ -775,6 +777,8 @@ void drawFrom(unsigned char *from, int pitch, int x, int y, int w, int h)
 
 void drawFromTo(unsigned char *dst, unsigned char *from, int pitch, int x, int y, int w, int h)
 {
+    w += x;
+    h += y;
     for (int i = x; i < w; i++)
     {
         for (int j = y; j < h; j++)

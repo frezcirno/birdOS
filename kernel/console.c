@@ -17,7 +17,7 @@
 /* #define __TTY_DEBUG__ */
 
 int headerHeight = 3;
-int colormode = PEN_DARK_GREEN;
+int colormode = PEN_DARK_BLUE;
 
 /* local routines */
 PRIVATE void w_copy(unsigned int dst, unsigned int src, int size);
