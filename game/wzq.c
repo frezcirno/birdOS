@@ -165,7 +165,7 @@ int IsFull(char board[ROW][COL], int row, int col)
 }
 
 //判断输赢
-char IsWin(char board[ROW][COL], int row, int col)
+char IsWin1(char board[ROW][COL], int row, int col)
 {
 	int i = 0;
 	int j = 0;
@@ -234,7 +234,6 @@ char IsWin(char board[ROW][COL], int row, int col)
 }
 void game(int fd_stdin, int fd_stdout)
 {
-	srand((unsigned int)time(NULL));
 	printf("请输入你想要的棋盘大小（长宽不超过100）：");
 	//scanf("%d", &hhh);
 	//scanf("%d", &lll);
@@ -248,7 +247,7 @@ void game(int fd_stdin, int fd_stdout)
 	while (1)
 	{
 		ComputerMove(board,hhh, lll); //电脑走
-		ret = IsWin(board, hhh, lll);
+		ret = IsWin1(board, hhh, lll);
 		if (ret != ' ')
 		{
 			break;
@@ -257,7 +256,7 @@ void game(int fd_stdin, int fd_stdout)
 		DisplayBoard(board, hhh, lll); //打印棋盘
 		printf("\n");
 		PlayerMove(board, hhh, lll,fd_stdin, fd_stdout); //玩家走
-		ret = IsWin(board, hhh, lll);
+		ret = IsWin1(board, hhh, lll);
 		if (ret != ' ')
 		{
 			break;
