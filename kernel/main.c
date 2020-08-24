@@ -726,11 +726,11 @@ void restartProcess(char str[])
 void showProcessWelcome()
 {
     printf("      ====================================================================\n");
-    printf("      #                            Welcome to                  ******    #\n");
-    printf("      #                     birdOS ~ Process Manager           **   *    #\n");
-    printf("      #                                                        ******    #\n");
-    printf("      #                                                        **        #\n");
-    printf("      #                                                        **        #\n");
+    printf("      #                            Welcome to                            #\n");
+    printf("      #                     birdOS ~ Process Manager                     #\n");
+    printf("      #                                                                  #\n");
+    printf("      #                                                                  #\n");
+    printf("      #                                                                  #\n");
     printf("      #             [COMMAND]                 [FUNCTION]                 #\n");
     printf("      #                                                                  #\n");
     printf("      #           $ ps           |     show all process                  #\n");
