@@ -10,6 +10,7 @@
 #include "global.h"
 #include "proto.h"
 #include "2048.h"
+#include "glib.h"
 
 int numbers2048[4][4] = {{}}; // The two dimentional array to store the numbers
 int tempUnit2048[4] = {};     // For function move()
@@ -23,13 +24,9 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
     // Specify the rules of the game
 
     clear();
-    printf("Welcome to 2048 Game!\n\n\n");
-    
-
-    printf("Control:\n");
-    printf("             LEFT: a    RIGHT: d\n");
-    printf("             UP:   w    DOWN:  s\n");
-    printf("             EXIT: press enter  \n\n\n");
+    printf("\n\n\n                                        Welcome to 2048 Game!\n\n\n");
+    printf("                                        Use WASD to control\n");
+    printf("                                        Press enter to exit\n\n\n");
     // Initialize the data
     initData();
 
@@ -37,18 +34,23 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
     addrandom2048();
     addrandom2048();
     printNums2048();
-
+	for (int i=0;i<4*33;i=i+32){
+        	drawLine(330,218+i,483,218+i,PEN_WHITE);
+        }
+        for (int i=0;i<4*39;i=i+38){
+        	drawLine(330+i,218,330+i,218+4*32,PEN_WHITE);
+        }
     // Turns in loops
     // while (scanf(" %c", &option)) {
-    while (read(fd_stdin, option2048, 2))
+    while (read(fd_stdin, option2048, 1))
     {
 
         clear();
-        printf("Welcome to 2048 Game!!!\n\n\n");
-        printf("Controls:\n");
-        printf("             LEFT: a    RIGHT: d\n");
-        printf("             UP:   w    DOWN:  s\n");
-        printf("             EXIT: press enter  \n\n\n");
+        printf("\n\n\n                                        Welcome to 2048 Game!\n\n\n");
+        printf("                                        Use WASD to control\n");
+        printf("                                        Press enter to exit\n\n\n");
+        
+        
         // Check if the player is dead
         if (!isAlive2048())
         {
@@ -64,6 +66,12 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
         validity2048 = 0;
 
         printNums2048();
+        for (int i=0;i<4*33;i=i+32){
+        	drawLine(330,218+i,483,218+i,PEN_WHITE);
+        }
+        for (int i=0;i<4*39;i=i+38){
+        	drawLine(330+i,218,330+i,218+4*32,PEN_WHITE);
+        }
     }
     clear();
 }
@@ -157,24 +165,24 @@ void printNums2048(void)
     /* Prints out the blocks of numbers */
 
     int i, j;
-    printf("             ---------------------\n");
+    printf("\n");
     for (i = 0; i <= 3; i++)
     {
-        printf("             |");
+        printf("                                        ");
         for (j = 0; j <= 3; j++)
         {
             if (numbers2048[i][j] != 0)
             {
-                printf("%4d|", numbers2048[i][j]);
+                printf("%4d ", numbers2048[i][j]);
             }
             else
             {
-                printf("    |");
+                printf("     ");
             }
         }
-        printf("\n             |----|----|----|----|\n");
+        printf("\n         \n");
     }
-    printf("Score: %d\n", score2048);
+    printf("\n                                        Score: %d\n", score2048);
 
     return;
 }
