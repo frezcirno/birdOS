@@ -268,7 +268,7 @@ void game(int fd_stdin, int fd_stdout)
 	// 判断输赢或平局
 	if (ret == 'p')
 	{
-		printf(It ends in a draw!\n");
+		printf("It ends in a draw!\n");
 		DisplayBoard(board, hhh,lll); //打印棋盘
 	}
 	else if (ret == 'x')
