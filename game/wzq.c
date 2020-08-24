@@ -18,7 +18,7 @@
 #define ROW 100
 #define COL 100
 
-int hhh,lll;
+int hhh, lll;
 void menu()
 {
 	printf("*******************************\n");
@@ -46,7 +46,7 @@ void InitBoard(char board[ROW][COL], int row, int col)
 	return;
 }
 
-//打印棋盘 
+//打印棋盘
 void DisplayBoard(char board[ROW][COL], int row, int col)
 {
 	int i = 0;
@@ -54,13 +54,13 @@ void DisplayBoard(char board[ROW][COL], int row, int col)
 
 	for (i = 0; i < row; i++)
 	{
-		printf("  %d ", i + 1); 
+		printf("  %d ", i + 1);
 	}
 	printf("\n");
 	printf("|");
 	for (j = 0; j < col; j++)
 	{
-		printf("---|"); 
+		printf("---|");
 	}
 	printf("\n");
 
@@ -69,14 +69,14 @@ void DisplayBoard(char board[ROW][COL], int row, int col)
 		printf("|");
 		for (j = 0; j < col; j++)
 		{
-			printf(" %c |", board[i][j]); 
+			printf(" %c |", board[i][j]);
 		}
-		printf(" %d ", i + 1); 
+		printf(" %d ", i + 1);
 		printf("\n");
 		printf("|");
 		for (j = 0; j < col; j++)
 		{
-			printf("---|"); 
+			printf("---|");
 		}
 		printf("\n");
 	}
@@ -106,8 +106,7 @@ void ComputerMove(char board[ROW][COL], int row, int col)
 	return;
 }
 
-
-void PlayerMove(char board[ROW][COL], int row, int col,int fd_stdin,int fd_stdout)
+void PlayerMove(char board[ROW][COL], int row, int col, int fd_stdin, int fd_stdout)
 {
 	int x = 0;
 	int y = 0;
@@ -116,17 +115,19 @@ void PlayerMove(char board[ROW][COL], int row, int col,int fd_stdin,int fd_stdou
 	printf("Please input your piece's coordinate(%d,%d): >", row, col);
 	while (1)
 	{
-		//scanf("%d %d", &x, &y);
-		read(fd_stdin, row, 3);
-		read(fd_stdin, col, 3);
+		char buf[10];
+		read(fd_stdin, buf, 10);
+		atoi(buf, &x);
+		read(fd_stdin, buf, 10);
+		atoi(buf, &y);
 		if (x >= 1 && x <= row && y >= 1 && y <= col)
 		{
 			if (board[x - 1][y - 1] == ' ')
-	 		{
+			{
 				board[x - 1][y - 1] = 'x';
 				break;
 			}
-	
+
 			else
 			{
 				printf("The coordinate is already occupied！\n");
@@ -173,11 +174,7 @@ char IsWin1(char board[ROW][COL], int row, int col)
 	{
 		for (j = 0; j < col - 4; j++)
 		{
-			if (board[i][j] == board[i][j + 1]
-				&& board[i][j + 1] == board[i][j + 2]
-				&& board[i][j + 2] == board[i][j + 3]
-				&& board[i][j + 3] == board[i][j + 4]
-				&& board[i][j] != ' ')
+			if (board[i][j] == board[i][j + 1] && board[i][j + 1] == board[i][j + 2] && board[i][j + 2] == board[i][j + 3] && board[i][j + 3] == board[i][j + 4] && board[i][j] != ' ')
 			{
 				return board[i][j];
 			}
@@ -189,11 +186,7 @@ char IsWin1(char board[ROW][COL], int row, int col)
 	{
 		for (i = 0; i < row - 4; i++)
 		{
-			if (board[i][j] == board[i + 1][j]
-				&& board[i + 1][j] == board[i + 2][j]
-				&& board[i + 2][j] == board[i + 3][j]
-				&& board[i + 3][j] == board[i + 4][j]
-				&& board[i][j] != ' ')
+			if (board[i][j] == board[i + 1][j] && board[i + 1][j] == board[i + 2][j] && board[i + 2][j] == board[i + 3][j] && board[i + 3][j] == board[i + 4][j] && board[i][j] != ' ')
 			{
 				return board[i][j];
 			}
@@ -203,20 +196,12 @@ char IsWin1(char board[ROW][COL], int row, int col)
 	// 斜线上五子连成一线，赢家产生
 	for (i = 0; i < row - 4; i++)
 	{
-		if (board[i][i] == board[i + 1][i + 1]
-			&& board[i + 1][i + 1] == board[i + 2][i + 2]
-			&& board[i + 2][i + 2] == board[i + 3][i + 3]
-			&& board[i + 3][i + 3] == board[i + 4][i + 4]
-			&& board[i][i] != ' ')
+		if (board[i][i] == board[i + 1][i + 1] && board[i + 1][i + 1] == board[i + 2][i + 2] && board[i + 2][i + 2] == board[i + 3][i + 3] && board[i + 3][i + 3] == board[i + 4][i + 4] && board[i][i] != ' ')
 		{
 			return board[i][i];
 		}
 
-		if (board[i][i + 4] == board[i + 1][i + 3]
-			&& board[i + 1][i + 3] == board[i + 2][i + 2]
-			&& board[i + 2][i + 2] == board[i + 3][i + 1]
-			&& board[i + 3][i + 1] == board[i + 4][i]
-			&& board[i][i + 4] != ' ')
+		if (board[i][i + 4] == board[i + 1][i + 3] && board[i + 1][i + 3] == board[i + 2][i + 2] && board[i + 2][i + 2] == board[i + 3][i + 1] && board[i + 3][i + 1] == board[i + 4][i] && board[i][i + 4] != ' ')
 		{
 			return board[i][i + 4];
 		}
@@ -230,32 +215,32 @@ char IsWin1(char board[ROW][COL], int row, int col)
 
 	//游戏结束
 	return ' ';
-
 }
 void game(int fd_stdin, int fd_stdout)
 {
 	printf("Please input the size of chessboard you want (length and width no more than 100)：");
-	//scanf("%d", &hhh);
-	//scanf("%d", &lll);
-	read(fd_stdin, hhh, 3);
-	read(fd_stdin, lll, 3);
+	char buf[10];
+	read(fd_stdin, buf, 10);
+	atoi(buf, &hhh);
+	read(fd_stdin, buf, 10);
+	atoi(buf, &lll);
 	int ret = 0;
-	char board[ROW][COL] = { ' ' };
+	char board[ROW][COL] = {' '};
 	InitBoard(board, hhh, lll);
 
 	// 下棋
 	while (1)
 	{
-		ComputerMove(board,hhh, lll); //电脑走
+		ComputerMove(board, hhh, lll); //电脑走
 		ret = IsWin1(board, hhh, lll);
 		if (ret != ' ')
 		{
 			break;
 		}
-		clear(); //清屏，优化界面
+		clear();					   //清屏，优化界面
 		DisplayBoard(board, hhh, lll); //打印棋盘
 		printf("\n");
-		PlayerMove(board, hhh, lll,fd_stdin, fd_stdout); //玩家走
+		PlayerMove(board, hhh, lll, fd_stdin, fd_stdout); //玩家走
 		ret = IsWin1(board, hhh, lll);
 		if (ret != ' ')
 		{
@@ -269,7 +254,7 @@ void game(int fd_stdin, int fd_stdout)
 	if (ret == 'p')
 	{
 		printf("It ends in a draw!\n");
-		DisplayBoard(board, hhh,lll); //打印棋盘
+		DisplayBoard(board, hhh, lll); //打印棋盘
 	}
 	else if (ret == 'x')
 	{
@@ -279,25 +264,27 @@ void game(int fd_stdin, int fd_stdout)
 	else if (ret == '0')
 	{
 		printf("Computer win!\n");
-		DisplayBoard(board,hhh, lll); //打印棋盘
+		DisplayBoard(board, hhh, lll); //打印棋盘
 	}
 	return;
 }
-int runWZQ(int fd_stdin, int fd_stdout) {
-	hhh = ROW; lll = COL;
-	int input = 0;
+int runWZQ(int fd_stdin, int fd_stdout)
+{
+	hhh = ROW;
+	lll = COL;
+	char input[10];
 	do
 	{
 		clear();
 		menu();
 		//scanf("%d", &input);
 		read(fd_stdin, input, 1);
-		switch (input)
+		switch (input[0])
 		{
-		case 1:
+		case '1':
 			game(fd_stdin, fd_stdout);
 			break;
-		case 0:
+		case '0':
 			printf("Quit game\n");
 			break;
 		default:
