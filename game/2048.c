@@ -21,14 +21,34 @@ int jiemian[11][11]={{}};//11*11游戏界面
 char str[11]={};
 float lastangle[3] = {0, 0, 0};
 int time[3] = {1, 25, 30};
+char option2048[2] = "";
+int x;
+int y;
+int count=10;//雷的数量
 
 PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 {
+	srand(get_ticks());
 	for(int i=0;i<11;i++){
 		for(int j=0;j<11;j++){
 			jiemian[i][j]=-1;
+			bomb[i][j]=0;
 		}
 	}
+	
+	
+	
+	while(count!=0){
+		x=rand()%11;
+		y=rand()%11;
+		if(bomb[x][y]!=1){
+			bomb[x][y]=1;
+			count--;
+		}
+	}
+	
+	
+	//打印雷区
 	clear();
 	printf("\n\n\n");
 	printf("                          1    2    3    4    5    6    7    8    9    10   11");
@@ -70,15 +90,51 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 			break;
 		}
 		
+		
+		
 		for(int j=0;j<11;j++){
-			if(jiemian[i][j]==-1){
-				printf("x    ");
+			if(bomb[i][j]==0){
+				printf("     ");
+			}
+			else{
+				switch(bomb[i][j]){
+				case 1:
+				printf("1    ");
+				break;
+				case 2:
+				printf("2    ");
+				break;
+				case 3:
+				printf("3    ");
+				break;
+				case 4:
+				printf("4    ");
+				break;
+				case 5:
+				printf("5    ");
+				break;
+				case 6:
+				printf("6    ");
+				break;
+				case 7:
+				printf("7    ");
+				break;
+				case 8:
+				printf("8    ");
+				break;
+				}
 			}
 		}
 		
 	}
-	drawLine(10,10,70,70,PEN_LIGHT_YELLOW);
-	while(1){}
+	
+	
+	//drawLine(10,10,70,70,PEN_LIGHT_YELLOW);
+	while (1){
+		x=read(fd_stdin, option2048, 2);
+		y=read(fd_stdin, option2048, 2);
+		printf("x");
+	}
 }
 
 
