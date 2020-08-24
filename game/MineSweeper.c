@@ -69,14 +69,7 @@ PUBLIC void startMineSweeper(int fd_stdin, int fd_stdout)
 			count--;
 		}
 	}
-	
-	
-	for (int i=0;i<11;i++){
-		for (int j=0;j<11;j++){
-			
-		}
-	}
-	
+
 	//打印雷区
 	clear();
 	printf("\n");
