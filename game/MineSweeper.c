@@ -220,7 +220,10 @@ PUBLIC void startMineSweeper(int fd_stdin, int fd_stdout)
 			break;
 			case 'b':
 			x=11;
-			break;			
+			break;	
+			
+			case 'q':
+			return;		
 		}
 		switch(optiony[0]){
 			
