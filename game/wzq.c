@@ -22,11 +22,11 @@ int hhh,lll;
 void menu()
 {
 	printf("*******************************\n");
-	printf("****  欢迎来到五子棋游戏！ ****\n");
-	printf("****      1.进入游戏       ****\n");
-	printf("****      0.退出游戏       ****\n");
+	printf("*** Welcome to Gobang game！***\n");
+	printf("****      1.Enter Game     ****\n");
+	printf("****      0.Quit Game      ****\n");
 	printf("*******************************\n");
-	printf("请输入0或1:");
+	printf("Please input 0 or 1:");
 	return;
 }
 
@@ -87,7 +87,7 @@ void ComputerMove(char board[ROW][COL], int row, int col)
 {
 	int x = 0;
 	int y = 0;
-	printf("电脑走:>\n");
+	printf("Computer Move:>\n");
 	while (1)
 	{
 		x = rand() % row;
@@ -112,8 +112,8 @@ void PlayerMove(char board[ROW][COL], int row, int col,int fd_stdin,int fd_stdou
 	int x = 0;
 	int y = 0;
 
-	printf("玩家走:>\n");
-	printf("请输入坐标(%d,%d): >", row, col);
+	printf("Player Move:>\n");
+	printf("Please input your piece's coordinate(%d,%d): >", row, col);
 	while (1)
 	{
 		//scanf("%d %d", &x, &y);
@@ -129,16 +129,16 @@ void PlayerMove(char board[ROW][COL], int row, int col,int fd_stdin,int fd_stdou
 	
 			else
 			{
-				printf("该坐标已经被占用\n");
-				printf("请重新输入:>");
+				printf("The coordinate is already occupied！\n");
+				printf("Please re-enter:>");
 				continue;
 			}
 		}
 
 		else
 		{
-			printf("坐标非法\n");
-			printf("请重新输入:>");
+			printf("Illegal coordinate！\n");
+			printf("Please re-enter:>");
 			continue;
 		}
 	}
@@ -234,7 +234,7 @@ char IsWin1(char board[ROW][COL], int row, int col)
 }
 void game(int fd_stdin, int fd_stdout)
 {
-	printf("请输入你想要的棋盘大小（长宽不超过100）：");
+	printf("Please input the size of chessboard you want (length and width no more than 100)：");
 	//scanf("%d", &hhh);
 	//scanf("%d", &lll);
 	read(fd_stdin, hhh, 3);
@@ -268,21 +268,19 @@ void game(int fd_stdin, int fd_stdout)
 	// 判断输赢或平局
 	if (ret == 'p')
 	{
-		printf("平局!\n");
+		printf(It ends in a draw!\n");
 		DisplayBoard(board, hhh,lll); //打印棋盘
 	}
 	else if (ret == 'x')
 	{
-		printf("玩家赢!\n");
+		printf("Player win!\n");
 		DisplayBoard(board, hhh, lll); //打印棋盘
 	}
 	else if (ret == '0')
 	{
-		printf("电脑赢!\n");
+		printf("Computer win!\n");
 		DisplayBoard(board,hhh, lll); //打印棋盘
 	}
-	printf("输入任意键继续\n");
-	
 	return;
 }
 int runWZQ(int fd_stdin, int fd_stdout) {
@@ -300,10 +298,10 @@ int runWZQ(int fd_stdin, int fd_stdout) {
 			game(fd_stdin, fd_stdout);
 			break;
 		case 0:
-			printf("退出游戏\n");
+			printf("Quit game\n");
 			break;
 		default:
-			printf("输入错误\n");
+			printf("Error input\n");
 		}
 	} while (input);
 	return;
