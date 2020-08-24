@@ -1,7 +1,7 @@
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                             main.c
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 #include "type.h"
@@ -246,7 +246,7 @@ void TestA()
     // const char bufw[80] = {0};
     //  const int rd_bytes = 3;
     //  char bufr[rd_bytes];
-    // sl();
+    sl();
     clear();
 
     char current_dirr[512] = "/"; // 记录当前路径（其实路径字符长度上限为MAX_PATH）
@@ -509,6 +509,7 @@ void help()
     printf("14. MS                             : Run MineSweeper game on this OS\n");
     printf("15. runSnake                       : Run Greedysnake game on this OS\n");
     printf("16. runWZQ                         : Run a chess game on this OS\n");
+    printf("17. clock                          : Run a clock\n");
     printf("====================================================================================================\n");
 }
 
