@@ -532,7 +532,8 @@ void help()
     printf("14. MS                             : Run MineSweeper game on this OS\n");
     printf("15. runSnake                       : Run Greedysnake game on this OS\n");
     printf("16. runWZQ                         : Run a chess game on this OS\n");
-    printf("17. clock                          : Run a clock\n");
+    printf("17. clock                          : Run a clock on this OS\n");
+    printf("18. runPushBox                     : Run PushBox game on this OS\n");
     printf("====================================================================================================\n");
 }
 
