@@ -497,9 +497,10 @@ void help()
     printf("10. mkdir    [dirname]             : Create a new directory in current directory\n");
     printf("11. cd       [dirname]             : Go to a directory in current directory\n");
     printf("12. runttt                         : Run a small game on this OS\n");
-    printf("13. run2048                        : Run 2048 game on this OS\n");
-    printf("14. runSnake                       : Run Greedysnake game on this OS\n");
-    printf("15. runWZQ                         : Run a chess game on this OS\n");
+    printf("13. 2048                           : Run 2048 game on this OS\n");
+    printf("14. MS                             : Run MineSweeper game on this OS\n");
+    printf("15. runSnake                       : Run Greedysnake game on this OS\n");
+    printf("16. runWZQ                         : Run a chess game on this OS\n");
     printf("====================================================================================================\n");
 }
 
