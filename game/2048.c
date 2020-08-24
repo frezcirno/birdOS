@@ -29,7 +29,7 @@ int count=10;//雷的数量
 
 PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 {
-	//srand(get_ticks());
+	srand(get_ticks());
 	for(int i=0;i<11;i++){
 		for(int j=0;j<11;j++){
 			bomb[i][j]=0;
@@ -81,9 +81,9 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 	//打印雷区
 	clear();
 	printf("\n");
-	printf("----------------------------------------------------------------------------------------------------");
+	printf("\n");
 	printf("                                         Welcome to Minesweeper                    \n");
-	printf("----------------------------------------------------------------------------------------------------\n");
+	printf("\n\n");
 	printf("                          1    2    3    4    5    6    7    8    9    10   11");
 	for(int i=0;i<11;i++){
 		printf("\n\n");
@@ -163,12 +163,26 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 		}
 		
 	}
-	printf("\n");
+	printf("\n");	
+	for(int i=0;i<360;i=i+32){
+		drawLine(205,150+i,645,150+i,PEN_WHITE);
+	}
+	for(int i=0;i<450;i=i+40){
+		drawLine(205+i,150,205+i,502,PEN_WHITE);
+	}
 	
-	drawLine(100,150,700,150,PEN_WHITE);
-	drawLine(0,110,800,110,PEN_WHITE);
+	
+
+	for (int i=0;i<5;i++){
+		drawLine(0,67+i,800,67+i,PEN_WHITE);
+		drawLine(0,100+i,800,100+i,PEN_WHITE);
+	}
+	
+
+	
 	while (1){
-		printf("\n                       please input the x:");
+		printf("\n                       enter 'q' to exit");
+		printf("                       please input the x:");
 		read(fd_stdin, optionx, 1);
 		printf("                       please input the y:");
 		read(fd_stdin, optiony, 1);
@@ -256,9 +270,9 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 	//打印雷区
 	clear();
 	printf("\n");
-	printf("----------------------------------------------------------------------------------------------------");
+	printf("\n");
 	printf("                                         Welcome to Minesweeper                    \n");
-	printf("----------------------------------------------------------------------------------------------------\n");
+	printf("\n\n");
 	printf("                          1    2    3    4    5    6    7    8    9    10   11");
 	for(int i=0;i<11;i++){
 		printf("\n\n");
@@ -339,7 +353,20 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 			}
 		}
 	}
-	printf("\n");
+		printf("\n");
+	
+	
+		for (int i=0;i<5;i++){
+			drawLine(0,67+i,800,67+i,PEN_WHITE);
+			drawLine(0,100+i,800,100+i,PEN_WHITE);
+		}
+		for(int i=0;i<360;i=i+32){
+			drawLine(205,150+i,645,150+i,PEN_WHITE);
+		}
+		for(int i=0;i<450;i=i+40){
+			drawLine(205+i,150,205+i,502,PEN_WHITE);
+		}
+
 	}
 	
 }
