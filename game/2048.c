@@ -80,7 +80,10 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 	
 	//打印雷区
 	clear();
-	printf("\n\n\n");
+	printf("\n");
+	printf("----------------------------------------------------------------------------------------------------");
+	printf("                                         Welcome to Minesweeper                    \n");
+	printf("----------------------------------------------------------------------------------------------------\n");
 	printf("                          1    2    3    4    5    6    7    8    9    10   11");
 	for(int i=0;i<11;i++){
 		printf("\n\n");
@@ -127,54 +130,54 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 				printf("     ");
 			}
 			else{
-				//if(bomb[i][j]==0){
-					switch(jiemian[i+1][j+1]){
-					case 0:
-					printf("     ");
-					break;
-					case 1:
-					printf("1    ");
-					break;
-					case 2:
-					printf("2    ");
-					break;
-					case 3:
-					printf("3    ");
-					break;
-					case 4:
-					printf("4    ");
-					break;
-					case 5:
-					printf("5    ");
-					break;
-					case 6:
-					printf("6    ");
-					break;
-					case 7:
-					printf("7    ");
-					break;
-					case 8:
-					printf("8    ");
-					break;
-					}
-				//}
-				//else{
-					//printf("     ");
-				//}
+				switch(jiemian[i+1][j+1]){
+				case 0:
+				printf("     ");
+				break;
+				case 1:
+				printf("1    ");
+				break;
+				case 2:
+				printf("2    ");
+				break;
+				case 3:
+				printf("3    ");
+				break;
+				case 4:
+				printf("4    ");
+				break;
+				case 5:
+				printf("5    ");
+				break;
+				case 6:
+				printf("6    ");
+				break;
+				case 7:
+				printf("7    ");
+				break;
+				case 8:
+				printf("8    ");
+				break;
+				}
 			}
 		}
 		
 	}
 	printf("\n");
 	
-	//drawLine(10,10,70,70,PEN_LIGHT_YELLOW);
+	drawLine(100,150,700,150,PEN_WHITE);
+	drawLine(0,110,800,110,PEN_WHITE);
 	while (1){
-		read(fd_stdin, optionx, 2);
-		read(fd_stdin, optiony, 2);
+		printf("\n                       please input the x:");
+		read(fd_stdin, optionx, 1);
+		printf("                       please input the y:");
+		read(fd_stdin, optiony, 1);
 		switch(optionx[0]){
+			
 			case '1':
 			x=1;
 			break;
+			
 			case '2':
 			x=2;
 			break;
@@ -199,17 +202,19 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 			case '9':
 			x=9;
 			break;
-			case '10':
+			case 'a':
 			x=10;
 			break;
-			case '11':
+			case 'b':
 			x=11;
 			break;			
 		}
 		switch(optiony[0]){
+			
 			case '1':
 			y=1;
 			break;
+			
 			case '2':
 			y=2;
 			break;
@@ -233,19 +238,27 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 			break;
 			case '9':
 			y=9;
-			break;
-			case '10':
+			break;	
+			case 'a':
 			y=10;
 			break;
-			case '11':
+			case 'b':
 			y=11;
-			break;			
+			break;		
 		}
-		chakan(x,y);
+		
+		
+		
+		if(bomb[x-1][y-1]==1)
+			jiemian[x][y]=-2;//代表这里是雷
+		else chakan(x,y);
 		
 	//打印雷区
 	clear();
-	printf("\n\n\n");
+	printf("\n");
+	printf("----------------------------------------------------------------------------------------------------");
+	printf("                                         Welcome to Minesweeper                    \n");
+	printf("----------------------------------------------------------------------------------------------------\n");
 	printf("                          1    2    3    4    5    6    7    8    9    10   11");
 	for(int i=0;i<11;i++){
 		printf("\n\n");
@@ -285,59 +298,53 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 			break;
 		}
 		
-		
+
 		
 		for(int j=0;j<11;j++){
-			//if(jiemian[i+1][j+1]==0||jiemian[i+1][j+1]==-1){
-				//printf("     ");
-			//}
-			//else{
-				//if(bomb[i][j]==0){
-					switch(jiemian[i+1][j+1]){
-					case -1:
-					printf("-1   ");
-					break;
-					case 0:
-					printf("0    ");
-					break;
-					case 1:
-					printf("1    ");
-					break;
-					case 2:
-					printf("2    ");
-					break;
-					case 3:
-					printf("3    ");
-					break;
-					case 4:
-					printf("4    ");
-					break;
-					case 5:
-					printf("5    ");
-					break;
-					case 6:
-					printf("6    ");
-					break;
-					case 7:
-					printf("7    ");
-					break;
-					case 8:
-					printf("8    ");
-					break;
-					}
-				//}
-				//else{
-				//	printf("     ");
-				//}
-			//}
+			switch(jiemian[i+1][j+1]){
+			case -2:
+			printf("Bomb");
+			printf(" ");
+			break;
+			case -1:
+			printf("     ");
+			break;
+			case 0:
+			printf("0    ");
+			break;
+			case 1:
+			printf("1    ");
+			break;
+			case 2:
+			printf("2    ");
+			break;
+			case 3:
+			printf("3    ");
+			break;
+			case 4:
+			printf("4    ");
+			break;
+			case 5:
+			printf("5    ");
+			break;
+			case 6:
+			printf("6    ");
+			break;
+			case 7:
+			printf("7    ");
+			break;
+			case 8:
+			printf("8    ");
+			break;
+			}
 		}
-		
 	}
-		printf("\n");
+	printf("\n");
 	}
+	
 }
 
-
+//递归翻开格子
 void chakan(int a,int b){
 	jiemian[a][b]=num[a][b];
 	if(a!=0&&a!=12&&b!=0&&b!=12&&jiemian[a][b]==0){
