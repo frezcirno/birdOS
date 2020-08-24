@@ -36,17 +36,39 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 		}
 	}
 	
-	
-	
+	//初始化指示数字
+	for (int i = 0; i < 13; i++)                       
+            {
+                for (int j = 0; j < 13; j++)
+                {
+
+                    num[i][j] = 0;
+                }
+            }
+            
+	//初始化雷区
 	while(count!=0){
 		x=rand()%11;
 		y=rand()%11;
 		if(bomb[x][y]!=1){
 			bomb[x][y]=1;
+			for (int i = x; i <= x + 2; i++)
+                    	{
+                        	for (int j = y; j <= y + 2; j++)
+                        	{
+                           		num[i][j]++;
+                        	}
+                    	}
 			count--;
 		}
 	}
 	
+	
+	for (int i=0;i<11;i++){
+		for (int j=0;j<11;j++){
+			
+		}
+	}
 	
 	//打印雷区
 	clear();
@@ -93,35 +115,40 @@ PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 		
 		
 		for(int j=0;j<11;j++){
-			if(bomb[i][j]==0){
+			if(num[i+1][j+1]==0){
 				printf("     ");
 			}
 			else{
-				switch(bomb[i][j]){
-				case 1:
-				printf("1    ");
-				break;
-				case 2:
-				printf("2    ");
-				break;
-				case 3:
-				printf("3    ");
-				break;
-				case 4:
-				printf("4    ");
-				break;
-				case 5:
-				printf("5    ");
-				break;
-				case 6:
-				printf("6    ");
-				break;
-				case 7:
-				printf("7    ");
-				break;
-				case 8:
-				printf("8    ");
-				break;
+				if(bomb[i][j]==0){
+					switch(num[i+1][j+1]){
+					case 1:
+					printf("1    ");
+					break;
+					case 2:
+					printf("2    ");
+					break;
+					case 3:
+					printf("3    ");
+					break;
+					case 4:
+					printf("4    ");
+					break;
+					case 5:
+					printf("5    ");
+					break;
+					case 6:
+					printf("6    ");
+					break;
+					case 7:
+					printf("7    ");
+					break;
+					case 8:
+					printf("8    ");
+					break;
+					}
+				}
+				else{
+					printf("     ");
 				}
 			}
 		}
