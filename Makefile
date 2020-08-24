@@ -34,7 +34,7 @@ OBJS        = kernel/kernel.o lib/syscall.o kernel/start.o kernel/main.o \
 			lib/getpid.o lib/syslog.o lib/fork.o lib/glib.o lib/u_vga16.o lib/BGA.o \
 			mm/main.o mm/func.o mm/memory.o \
 			fs/main.o fs/open.o fs/misc.o fs/read_write.o fs/link.o fs/disklog.o \
-			game/TTT.o game/2048.o game/flappy.o game/pushBox.o game/clock.o game/math.o game/Snake.o game/wzq.o
+			game/TTT.o game/MineSweeper.o game/2048.o game/flappy.o game/pushBox.o game/clock.o game/math.o game/Snake.o game/wzq.o
 DASMOUTPUT  = kernel.bin.asm
 
 # All Phony Targets

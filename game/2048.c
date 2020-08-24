@@ -10,379 +10,347 @@
 #include "global.h"
 #include "proto.h"
 #include "2048.h"
-#include "glib.h"
-#include "math.h"
 
-int n = 11;
-int Label[11][11]={{}};
-int bomb[11][11]={{}};
-int num[13][13]={{}};//指示周围雷的数量的数组
-int jiemian[13][13]={{}};//13*13界面,中间的11*11有效
-char str[11]={};
-float lastangle[3] = {0, 0, 0};
-int time[3] = {1, 25, 30};
-char optionx[2] = "";
-char optiony[2] = "";
-int x;
-int y;
-int count=10;//雷的数量
+int numbers2048[4][4] = {{}}; // The two dimentional array to store the numbers
+int tempUnit2048[4] = {};     // For function move()
+unsigned score2048 = 0;
+int validity2048 = 0;    // The validity of the user's move(0 represent invalidity and 1 represent validity)
+char option2048[2] = ""; // The option of the user
+
 
 PUBLIC void start2048Game(int fd_stdin, int fd_stdout)
 {
-	srand(get_ticks());
-	for(int i=0;i<11;i++){
-		for(int j=0;j<11;j++){
-			bomb[i][j]=0;
-		}
-	}
-	
-	//初始化打印界面
-	for(int i=0;i<13;i++){
-		for(int j=0;j<13;j++){
-			jiemian[i][j]=-1;
-		}
-	}
-	
-	
-	//初始化指示数字
-	for (int i = 0; i < 13; i++)                       
+    // Specify the rules of the game
+
+    clear();
+    printf("Welcome to 2048 Game!\n\n\n");
+    
+
+    printf("Control:\n");
+    printf("             LEFT: a    RIGHT: d\n");
+    printf("             UP:   w    DOWN:  s\n");
+    printf("             EXIT: press enter  \n\n\n");
+    // Initialize the data
+    initData();
+
+    // Initalization
+    addrandom2048();
+    addrandom2048();
+    printNums2048();
+
+    // Turns in loops
+    // while (scanf(" %c", &option)) {
+    while (read(fd_stdin, option2048, 2))
+    {
+
+        clear();
+        printf("Welcome to 2048 Game!!!\n\n\n");
+        printf("Controls:\n");
+        printf("             LEFT: a    RIGHT: d\n");
+        printf("             UP:   w    DOWN:  s\n");
+        printf("             EXIT: press enter  \n\n\n");
+        // Check if the player is dead
+        if (!isAlive2048())
+        {
+            printf("You lose!!!\a\n");
+            break;
+        }
+
+        morge2048();
+        if (validity2048)
+        {
+            addrandom2048();
+        }
+        validity2048 = 0;
+
+        printNums2048();
+    }
+    clear();
+}
+
+void morge2048(void)
+{
+    /* Morges(moves and merges) the number blocks */
+
+    switch (option2048[0])
+    {
+    case 'w':
+        for (int j = 0; j <= 3; j++)
+        {
+            for (int i = 0, k = 0; i <= 3; i++)
             {
-                for (int j = 0; j < 13; j++)
-                {
-
-                    num[i][j] = 0;
-                }
+                tempUnit2048[k++] = numbers2048[i][j];
             }
-            
-	//初始化雷区
-	while(count!=0){
-		x=rand()%11;
-		y=rand()%11;
-		if(bomb[x][y]!=1){
-			bomb[x][y]=1;
-			for (int i = x; i <= x + 2; i++)
-                    	{
-                        	for (int j = y; j <= y + 2; j++)
-                        	{
-                           		num[i][j]++;
-                        	}
-                    	}
-			count--;
-		}
-	}
-	
-	
-	for (int i=0;i<11;i++){
-		for (int j=0;j<11;j++){
-			
-		}
-	}
-	
-	//打印雷区
-	clear();
-	printf("\n");
-	printf("\n");
-	printf("                                         Welcome to Minesweeper                    \n");
-	printf("\n\n");
-	printf("                          1    2    3    4    5    6    7    8    9    10   11");
-	for(int i=0;i<11;i++){
-		printf("\n\n");
-		switch(i){
-			case 0:
-			printf("                       1  ");
-			break;
-			case 1:
-			printf("                       2  ");
-			break;
-			case 2:
-			printf("                       3  ");
-			break;
-			case 3:
-			printf("                       4  ");
-			break;
-			case 4:
-			printf("                       5  ");
-			break;
-			case 5:
-			printf("                       6  ");
-			break;
-			case 6:
-			printf("                       7  ");
-			break;
-			case 7:
-			printf("                       8  ");
-			break;
-			case 8:
-			printf("                       9  ");
-			break;
-			case 9:
-			printf("                       10 ");
-			break;
-			case 10:
-			printf("                       11 ");
-			break;
-		}
-		
-		
-		
-		for(int j=0;j<11;j++){
-			if(jiemian[i+1][j+1]==0||jiemian[i][j]==-1){
-				printf("     ");
-			}
-			else{
-				switch(jiemian[i+1][j+1]){
-				case 0:
-				printf("     ");
-				break;
-				case 1:
-				printf("1    ");
-				break;
-				case 2:
-				printf("2    ");
-				break;
-				case 3:
-				printf("3    ");
-				break;
-				case 4:
-				printf("4    ");
-				break;
-				case 5:
-				printf("5    ");
-				break;
-				case 6:
-				printf("6    ");
-				break;
-				case 7:
-				printf("7    ");
-				break;
-				case 8:
-				printf("8    ");
-				break;
-				}
-			}
-		}
-		
-	}
-	printf("\n");	
-	for(int i=0;i<360;i=i+32){
-		drawLine(205,150+i,645,150+i,PEN_WHITE);
-	}
-	for(int i=0;i<450;i=i+40){
-		drawLine(205+i,150,205+i,502,PEN_WHITE);
-	}
-	
-	
 
-	for (int i=0;i<5;i++){
-		drawLine(0,67+i,800,67+i,PEN_WHITE);
-		drawLine(0,100+i,800,100+i,PEN_WHITE);
-	}
-	
+            move2048();
+            merge2048();
+            move2048();
 
-	
-	while (1){
-		printf("\n                       enter 'q' to exit");
-		printf("                       please input the x:");
-		read(fd_stdin, optionx, 1);
-		printf("                       please input the y:");
-		read(fd_stdin, optiony, 1);
-		switch(optionx[0]){
-			
-			case '1':
-			x=1;
-			break;
-			
-			case '2':
-			x=2;
-			break;
-			case '3':
-			x=3;
-			break;
-			case '4':
-			x=4;
-			break;
-			case '5':
-			x=5;
-			break;
-			case '6':
-			x=6;
-			break;
-			case '7':
-			x=7;
-			break;
-			case '8':
-			x=8;
-			break;
-			case '9':
-			x=9;
-			break;
-			case 'a':
-			x=10;
-			break;
-			case 'b':
-			x=11;
-			break;			
-		}
-		switch(optiony[0]){
-			
-			case '1':
-			y=1;
-			break;
-			
-			case '2':
-			y=2;
-			break;
-			case '3':
-			y=3;
-			break;
-			case '4':
-			y=4;
-			break;
-			case '5':
-			y=5;
-			break;
-			case '6':
-			y=6;
-			break;
-			case '7':
-			y=7;
-			break;
-			case '8':
-			y=8;
-			break;
-			case '9':
-			y=9;
-			break;	
-			case 'a':
-			y=10;
-			break;
-			case 'b':
-			y=11;
-			break;		
-		}
-		
-		
-		
-		if(bomb[x-1][y-1]==1)
-			jiemian[x][y]=-2;//代表这里是雷
-		else chakan(x,y);
-		
-	//打印雷区
-	clear();
-	printf("\n");
-	printf("\n");
-	printf("                                         Welcome to Minesweeper                    \n");
-	printf("\n\n");
-	printf("                          1    2    3    4    5    6    7    8    9    10   11");
-	for(int i=0;i<11;i++){
-		printf("\n\n");
-		switch(i){
-			case 0:
-			printf("                       1  ");
-			break;
-			case 1:
-			printf("                       2  ");
-			break;
-			case 2:
-			printf("                       3  ");
-			break;
-			case 3:
-			printf("                       4  ");
-			break;
-			case 4:
-			printf("                       5  ");
-			break;
-			case 5:
-			printf("                       6  ");
-			break;
-			case 6:
-			printf("                       7  ");
-			break;
-			case 7:
-			printf("                       8  ");
-			break;
-			case 8:
-			printf("                       9  ");
-			break;
-			case 9:
-			printf("                       10 ");
-			break;
-			case 10:
-			printf("                       11 ");
-			break;
-		}
-		
+            for (int i = 0, k = 0; i <= 3; i++)
+            {
+                numbers2048[i][j] = tempUnit2048[k++];
+            }
+        }
+        break;
+    case 'a':
+        for (int i = 0; i <= 3; i++)
+        {
+            for (int j = 0, k = 0; j <= 3; j++)
+            {
+                tempUnit2048[k++] = numbers2048[i][j];
+            }
 
-		
-		for(int j=0;j<11;j++){
-			switch(jiemian[i+1][j+1]){
-			case -2:
-			printf("Bomb");
-			printf(" ");
-			break;
-			case -1:
-			printf("     ");
-			break;
-			case 0:
-			printf("0    ");
-			break;
-			case 1:
-			printf("1    ");
-			break;
-			case 2:
-			printf("2    ");
-			break;
-			case 3:
-			printf("3    ");
-			break;
-			case 4:
-			printf("4    ");
-			break;
-			case 5:
-			printf("5    ");
-			break;
-			case 6:
-			printf("6    ");
-			break;
-			case 7:
-			printf("7    ");
-			break;
-			case 8:
-			printf("8    ");
-			break;
-			}
-		}
-	}
-		printf("\n");
-	
-	
-		for (int i=0;i<5;i++){
-			drawLine(0,67+i,800,67+i,PEN_WHITE);
-			drawLine(0,100+i,800,100+i,PEN_WHITE);
-		}
-		for(int i=0;i<360;i=i+32){
-			drawLine(205,150+i,645,150+i,PEN_WHITE);
-		}
-		for(int i=0;i<450;i=i+40){
-			drawLine(205+i,150,205+i,502,PEN_WHITE);
-		}
+            move2048();
+            merge2048();
+            move2048();
 
-	}
-	
+            for (int j = 0, k = 0; j <= 3; j++)
+            {
+                numbers2048[i][j] = tempUnit2048[k++];
+            }
+        }
+        break;
+    case 's':
+        for (int j = 0; j <= 3; j++)
+        {
+            for (int i = 3, k = 0; i >= 0; i--)
+            {
+                tempUnit2048[k++] = numbers2048[i][j];
+            }
+
+            move2048();
+            merge2048();
+            move2048();
+
+            for (int i = 3, k = 0; i >= 0; i--)
+            {
+                numbers2048[i][j] = tempUnit2048[k++];
+            }
+        }
+        break;
+    case 'd':
+        for (int i = 0; i <= 3; i++)
+        {
+            for (int j = 3, k = 0; j >= 0; j--)
+            {
+                tempUnit2048[k++] = numbers2048[i][j];
+            }
+
+            move2048();
+            merge2048();
+            move2048();
+
+            for (int j = 3, k = 0; j >= 0; j--)
+            {
+                numbers2048[i][j] = tempUnit2048[k++];
+            }
+        }
+        break;
+    default:
+        printf("Illegal input!!!\a\n");
+    }
+    return;
 }
 
-//递归翻开格子
-void chakan(int a,int b){
-	jiemian[a][b]=num[a][b];
-	if(a!=0&&a!=12&&b!=0&&b!=12&&jiemian[a][b]==0){
-		if(jiemian[a-1][b-1]==-1)chakan(a-1,b-1);
-		if(jiemian[a-1][b  ]==-1)chakan(a-1,b  );
-		if(jiemian[a-1][b+1]==-1)chakan(a-1,b+1);
-		if(jiemian[a  ][b-1]==-1)chakan(a  ,b-1);
-		if(jiemian[a  ][b+1]==-1)chakan(a  ,b+1);
-		if(jiemian[a+1][b-1]==-1)chakan(a+1,b-1);
-		if(jiemian[a+1][b  ]==-1)chakan(a+1,b  );
-		if(jiemian[a+1][b+1]==-1)chakan(a+1,b+1);
-	}
+void printNums2048(void)
+{
+    /* Prints out the blocks of numbers */
+
+    int i, j;
+    printf("             ---------------------\n");
+    for (i = 0; i <= 3; i++)
+    {
+        printf("             |");
+        for (j = 0; j <= 3; j++)
+        {
+            if (numbers2048[i][j] != 0)
+            {
+                printf("%4d|", numbers2048[i][j]);
+            }
+            else
+            {
+                printf("    |");
+            }
+        }
+        printf("\n             |----|----|----|----|\n");
+    }
+    printf("Score: %d\n", score2048);
+
+    return;
 }
 
+int isAlive2048(void)
+{
+    /* Checks if the player is still alive */
+
+    if (zeroNum2048())
+    {
+        return 1;
+    }
+    else if (canEliminate2048())
+    {
+        return 1;
+    }
+    else
+        return 0;
+}
+
+int canEliminate2048(void)
+{
+    /* Checks if the number blocks(BLOCLED!!!) can be eliminated */
+
+    // Rows
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = 0; j <= 2; j++)
+        {
+            if (numbers2048[i][j] == numbers2048[i][j + 1])
+                return 1;
+        }
+    }
+
+    // Columns
+    for (int i = 0; i <= 2; i++)
+    {
+        for (int j = 0; j <= 3; j++)
+        {
+            if (numbers2048[i][j] == numbers2048[i + 1][j])
+                return 1;
+        }
+    }
+
+    return 0;
+}
+
+int zeroNum2048(void)
+{
+    /* Counts the number of zeroes in the number block */
+
+    int count = 0;
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = 0; j <= 3; j++)
+        {
+            if (numbers2048[i][j] == 0)
+                count++;
+        }
+    }
+    return count;
+}
+
+void addrandom2048(void)
+{
+    /* This function is used to add one 2 into a random empty place */
+
+    // The random seed
+    // srand2048(int(time(0)));
+    srand(1234);
+
+    int index = rand() % zeroNum2048();
+    int position = 0;
+    for (int i = 0; i <= 3; i++)
+    {
+        for (int j = 0; j <= 3; j++)
+        {
+            if (numbers2048[i][j] == 0)
+            {
+                if (position == index)
+                {
+                    numbers2048[i][j] = 2;
+                    return;
+                }
+                position++;
+            }
+        }
+    }
+
+    return;
+}
+
+void move2048(void)
+{
+    int current = -1, count = 0;
+
+    // Positioning the first zero in this unit
+    for (int i = 0; i <= 2; i++)
+    {
+        if (tempUnit2048[i] == 0)
+        {
+            current = i;
+            break;
+        }
+    }
+
+    // No zeroes in this unit
+    if (current == -1)
+    {
+        return;
+    }
+
+    // Move the zero(es) back
+    for (; current <= 2;)
+    {
+        if (tempUnit2048[current + 1] == 0)
+        {
+            count++;
+            current++;
+        }
+        else
+        {
+            validity2048 = 1;
+            tempUnit2048[current - count] = tempUnit2048[current + 1];
+            current++;
+            for (int k = current - count; k <= current; k++)
+                tempUnit2048[k] = 0;
+        }
+    }
+
+    return;
+}
+
+void merge2048(void)
+{
+    for (int i = 0; i <= 2; i++)
+    {
+        if (tempUnit2048[i] != 0)
+        {
+            if (tempUnit2048[i + 1] == tempUnit2048[i])
+            {
+                validity2048 = 1;
+                tempUnit2048[i] = tempUnit2048[i + 1] + tempUnit2048[i];
+                score2048 += tempUnit2048[i];
+                tempUnit2048[i + 1] = 0;
+                i++;
+            }
+        }
+        else
+            break;
+    }
+
+    return;
+}
+
+/**
+ * Initializes the data
+ */
+void initData(void)
+{
+    int row = 0, column = 0;
+
+    for (row = 0; row < 4; row++)
+    {
+        for (column = 0; column < 4; column++)
+        {
+            numbers2048[row][column] = 0;
+        }
+    }
+
+    for (row = 0; row < 4; row++)
+    {
+        tempUnit2048[row] = 0;
+    }
+
+    score2048 = 0;
+    validity2048 = 0;
+    option2048[2] = "";
+}

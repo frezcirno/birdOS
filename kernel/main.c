@@ -330,7 +330,12 @@ void TestA()
             TTT(fd_stdin, fd_stdout);
             clear();
         }
-        else if (strcmp(cmd, "run2048") == 0)
+        else if (strcmp(cmd, "MS") == 0)
+        {
+            startMineSweeper(fd_stdin, fd_stdout);
+            clear();
+        }
+        else if (strcmp(cmd, "2048") == 0)
         {
             start2048Game(fd_stdin, fd_stdout);
             clear();
