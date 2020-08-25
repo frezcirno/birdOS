@@ -56,10 +56,20 @@ char key = 0;   // 存储用户的按键
 int row = 0, column = 0;    // 人物在第几行，第几列
 int oldType = 0;    // 人物站着的地方原来是什么地面
 int oldBoxType = 0; // 箱子站着的地方原来是什么地面 
+
+void DrawInfo(){
+    drawLine(200,50,600,50,0);
+    drawText(300,75,"Welcome to Pushbox game",0);
+    drawText(300,100,"Use WASD to move",0);
+    drawText(300,125,"press enter to quit",0);
+    drawLine(200,150,600,150,0);
+}
 // 画地图方法
 void DrawMap() {
+    printf("\n\n\n\n\n\n\n\n\n");
     for (int i = 0; i < sizeof(map) / sizeof(map[0]); i++)
     {
+        printf("                                           ");
         for (int j = 0; j < sizeof(map[0]) / sizeof(map[0][0]); j++)
         {
             switch (map[i][j])
@@ -145,6 +155,7 @@ void runPushBox(int fd_stdin, int fd_stdout)
 {
     clear();
     initPushBox();
+    DrawInfo();
     DrawMap();
     char option[10];
     int quit=0;
@@ -171,6 +182,7 @@ void runPushBox(int fd_stdin, int fd_stdout)
         }
         if(resultCheck()) break; // 检查是否完成
         clear();
+        DrawInfo();
         DrawMap();  // 重新画图
     }
     clear();
