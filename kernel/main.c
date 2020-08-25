@@ -19,9 +19,11 @@
 #include "flappy.h"
 #include "memory.h"
 #include "glib.h"
+#include "mouse.h"
 #include "bmp.h"
 
 int headercolormode = PEN_LIGHT_BLUE;
+char headerText[] = "Bird-OS            ";
 
 /*======================================================================*
                             kernel_main
@@ -146,6 +148,7 @@ PUBLIC int kernel_main()
 
     init_clock();
     init_keyboard();
+    init_mouse();
 
     // mm_init();
     init_video();
@@ -323,6 +326,10 @@ void TestA()
         else if (strcmp(cmd, "help") == 0)
         {
             help();
+        }
+        else if (strcmp(cmd, "mouse") == 0)
+        {
+            mousegame();
         }
         else if (strcmp(cmd, "color") == 0)
         {
@@ -504,7 +511,7 @@ void clear()
 {
     fillRect(0, headerHeight * 16, scr_x, scr_y + 40, colormode);
     fillRect(0, 0, scr_x, headerHeight * 16, headercolormode);
-    drawText(20, 16, "Bird-OS", PEN_WHITE);
+    drawText(20, 16, headerText, PEN_WHITE);
     drawText(800 - 32 * 8 - 20, 16, "Operating System Course Project", PEN_WHITE);
     console_table[current_console].cursor = headerHeight * SCR_WIDTH;
 }
@@ -1250,6 +1257,28 @@ void showProcess()
         //printf("        %d                 %s                   %d                   yes\n", proc_table[i].pid, proc_table[i].name, proc_table[i].priority);
     }
     printf("===============================================================================\n\n");
+}
+
+void mousegame(){
+    int ox, oy, oc=colormode;
+    strcpy(headerText,"Mouse Game");
+    colormode = PEN_BLACK;
+    clear();
+    milli_delay(500);
+    fillRect(0, 0, 800, 600, colormode);
+    while (1)
+    {
+        if (mouseevent)
+        {
+            fillRect(ox, oy, ox + 8, oy + 16, colormode);
+            drawGlyph(mouse_x, mouse_y, cursor, PEN_WHITE);
+            ox = mouse_x;
+            oy = mouse_y;
+            mouseevent = 0;
+        }
+        printf("");
+    }
+    strcpy(headerText, "Bird-OS");
 }
 
 void calMain(char *option)

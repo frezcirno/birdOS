@@ -27,6 +27,7 @@ void drawArrow(float angle, int length, int color);
 
 void clock(int fd_stdin, int fd_stdout)
 {
+    char cmd[20];
     fillRect(0, 0, scr_x, scr_y, PEN_BLACK);
     drawCircle(clockx, clocky, clockr, PEN_BLUE);
     drawCircle(clockx, clocky, clockr - 2, PEN_BLUE);
@@ -45,37 +46,8 @@ void clock(int fd_stdin, int fd_stdout)
     int time[3] = {1, 25, 30};
     float lastangle[3] = {0, 0, 0};
     int mode = 2;
-    char cmd[20];
-    read(fd_stdin, cmd, 10);
     while (!quit)
     {
-        if (key_pressed)
-        {
-            read(fd_stdin, cmd, 1);
-            switch (cmd[0])
-            {
-            case 'q':
-                quit = 1;
-                break;
-            case 'h':
-                mode = 0;
-                break;
-            case 'm':
-                mode = 1;
-                break;
-            case 's':
-                mode = 2;
-                break;
-            case '+':
-                time[mode]++;
-                break;
-            case '-':
-                time[mode]--;
-                break;
-            default:
-                break;
-            }
-        }
         int now = get_ticks();
         if (now - last >= HZ)
         {

@@ -46,7 +46,7 @@ void init_video()
     initPalette();
     cacheFonts();
 
-    // init_sheets(scr_x, scr_y);
+    init_sheets(scr_x, scr_y);
 }
 
 void initPalette()

@@ -57,7 +57,7 @@ unsigned int mm_init()
     // }
     // setup_paging(highest);
 
-    mm_free((unsigned char *)0x500000, bp.mem_size - 0x500000);
+    mm_free((unsigned char *)0x600000, bp.mem_size - 0x600000);
 
     return bp.mem_size;
 }

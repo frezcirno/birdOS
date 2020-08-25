@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * `phys_copy' and `phys_set' are used only in the kernel, where segments
  * are all flat (based on 0). In the meanwhile, currently linear address
