@@ -36,6 +36,7 @@ struct proc {
 
         int ticks;                 /* remained ticks */
         int priority;
+	int type;
 
 	u32 pid;                   /* process id passed in from MM */
 	char name[16];		   /* name of the process */
@@ -83,9 +84,13 @@ struct task {
 /* Number of tasks & procs */
 #define NR_TASKS	5
 #define NR_PROCS	20 // 32
+#define NR_QUEUE		3
 #define NR_NATIVE_PROCS 3
 #define FIRST_PROC	proc_table[0]
 #define LAST_PROC	proc_table[NR_TASKS + NR_PROCS - 1]
+#define Q_PR1			10
+#define Q_PR2			20
+#define Q_PR3			100
 
 /* stacks of tasks */
 #define STACK_SIZE_TTY		0x8000
@@ -116,3 +121,11 @@ struct task {
 
 PUBLIC  u32  new_getpid(void);
 
+
+typedef struct s_queue{
+	struct s_proc**	p_head;
+	struct s_proc**	p_tail;
+	int	priority;
+	int	count;
+	struct	s_proc*	buf[NR_PROCS];
+}QUEUE;

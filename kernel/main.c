@@ -32,6 +32,18 @@ PUBLIC int kernel_main()
 
     struct task *p_task;
     struct proc *p_proc = proc_table;
+    QUEUE *p_queue = queue_table;
+    int *p_prio = priority_table;
+
+    for (int i = 0; i < NR_QUEUE + 1; i++)
+    {
+        p_queue->p_head = p_queue->p_tail = p_queue->buf;
+        p_queue->priority = *p_prio;
+        p_queue->count = 0;
+        p_prio++;
+        p_queue++;
+    }
+
     char *p_task_stack = task_stack + STACK_SIZE_TOTAL;
     // u16   selector_ldt = SELECTOR_LDT_FIRST;
     u8 privilege;
@@ -39,13 +51,11 @@ PUBLIC int kernel_main()
     int eflags;
     int i, j;
     int prio;
-    for (i = 0; i < NR_TASKS + NR_PROCS; i++)
+    for (i = 0; i < NR_TASKS + NR_PROCS; i++, p_proc++, p_task++)
     {
         if (i >= NR_TASKS + NR_NATIVE_PROCS)
         {
             p_proc->p_flags = FREE_SLOT;
-            p_proc++;
-            p_task++;
             continue;
         }
         if (i < NR_TASKS)
@@ -112,6 +122,7 @@ PUBLIC int kernel_main()
         p_proc->regs.eflags = eflags;
 
         /* p_proc->nr_tty       = 0; */
+        p_proc->type = prio;
 
         p_proc->p_flags = 0;
         p_proc->p_msg = 0;
@@ -120,22 +131,13 @@ PUBLIC int kernel_main()
         p_proc->has_int_msg = 0;
         p_proc->q_sending = 0;
         p_proc->next_sending = 0;
-        p_proc->pid = i;
 
         for (j = 0; j < NR_FILES; j++)
             p_proc->filp[j] = 0;
 
-        p_proc->ticks = p_proc->priority = prio;
-
         p_task_stack -= p_task->stacksize;
-        p_proc++;
-        p_task++;
-        // selector_ldt += 1 << 3;
+        append_proc(p_proc, queue_table);
     }
-
-    /* proc_table[NR_TASKS + 0].nr_tty = 0; */
-    /* proc_table[NR_TASKS + 1].nr_tty = 1; */
-    /* proc_table[NR_TASKS + 2].nr_tty = 1; */
 
     k_reenter = 0;
     ticks = 0;
@@ -155,7 +157,7 @@ PUBLIC int kernel_main()
     }
 }
 
-void Init_test()
+void InitMain()
 {
     char tty_name[] = "/dev_tty2";
 
@@ -379,17 +381,17 @@ void TestA()
             printi(new_getpid());
             printf("\n");
         }
-        else if (strcmp(cmd, "test_fork") == 0)
-        {
-            int pid = fork();
-            if (pid == 0)
-            {
-            }
-            else
-            {
-                printl("childpid: %d, childname: %s\n", pid, proc_table[pid].name);
-            }
-        }
+        // else if (strcmp(cmd, "test_fork") == 0)
+        // {
+        //     int pid = fork();
+        //     if (pid == 0)
+        //     {
+        //     }
+        //     else
+        //     {
+        //         printl("childpid: %d, childname: %s\n", pid, proc_table[pid].name);
+        //     }
+        // }
         else if (!strcmp(cmd, "cal"))
         {
             if (strlen(rdbuf) > 4)
@@ -1236,7 +1238,7 @@ void showProcess()
     {
         printf("        %d", proc_table[i].pid);
         printf("                 %5s", proc_table[i].name);
-        printf("                   %2d", proc_table[i].priority);
+        printf("                %5d", proc_table[i].priority);
         if (proc_table[i].priority == 0)
         {
             printf("                   no\n");

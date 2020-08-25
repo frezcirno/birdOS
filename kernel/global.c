@@ -35,6 +35,9 @@ PUBLIC struct task user_proc_table[NR_NATIVE_PROCS] = {
 	{TestB, STACK_SIZE_TESTB, "TestB"},
 	{TestC, STACK_SIZE_TESTC, "TestC"}};
 
+PUBLIC	QUEUE			queue_table[NR_QUEUE + 1];
+PUBLIC	int			priority_table[NR_QUEUE + 1] = {Q_PR1,Q_PR2,Q_PR3,-100};
+
 PUBLIC	char		task_stack[STACK_SIZE_TOTAL];
 
 PUBLIC	TTY		tty_table[NR_CONSOLES];
