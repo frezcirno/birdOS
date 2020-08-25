@@ -400,13 +400,18 @@ PUBLIC int sys_printx(int _unused1, int _unused2, char* s, struct proc* p_proc)
 		const char * q = p + 1; /* +1: skip the magic char */
 
 		while (v < (char*)(vram + V_MEM_SIZE)) {
-			*v++ = *q++;
-			*v++ = RED_CHAR;
+			// *v++ = *q++;
+			// *v++ = RED_CHAR;
+			int y = (v - vram) / SCR_WIDTH;
+			int x = (v - vram) % SCR_WIDTH;
+			drawCharClr(x * 8, y * 16, *q++, PEN_RED, colormode);
+			v++;
 			if (!*q) {
 				while ((v - vram) % (SCR_WIDTH * 16)) {
 					/* *v++ = ' '; */
 					v++;
-					*v++ = GRAY_CHAR;
+					// drawChar(x,y,' ',PEN_LIGHT_GRAY);
+					// *v++ = GRAY_CHAR;
 				}
 				q = p + 1;
 			}
