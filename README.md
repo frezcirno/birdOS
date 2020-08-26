@@ -19,9 +19,9 @@
   
 - 部分功能截图，更多截图见文档`./docs/os项目说明文档.docx`
 
-![clock](\img\clock.gif)
+![clock](.\img\clock.gif)
 
-![minesweeper](\img\minesweeper.png)
+![minesweeper](.\img\minesweeper.png)
 
 ## 运行方式
 
