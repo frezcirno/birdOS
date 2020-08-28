@@ -30,6 +30,7 @@
 
 ```shell
 $ sudo apt install -y gcc gcc-multilib nasm qemu-system-x86 gdb
+$ sudo apt install libc6-dev-i386
 $ touch ~/.gdbinit
 $ echo "set auto-load safe-path /" > ~/.gdbinit
 ```
